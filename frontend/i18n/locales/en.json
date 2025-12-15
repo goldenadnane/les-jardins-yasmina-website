@@ -1,0 +1,177 @@
+{
+  "common": {
+    "home": "Home",
+    "reservation": "Reservation",
+    "rooms": "Rooms",
+    "gallery": "Gallery",
+    "activities": "Activities",
+    "contact": "Contact",
+    "book_now": "Book Now",
+    "learn_more": "Learn More",
+    "view_all": "View All",
+    "submit": "Submit",
+    "close": "Close",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "adults": "Adults",
+    "children": "Children",
+    "guests": "Guests",
+    "per_night": "per night",
+    "from": "From"
+  },
+  "hero": {
+    "slide1_title": "Welcome to Les Jardins Yasmina Guesthouse",
+    "slide1_subtitle": "Your luxury retreat in the Moroccan Atlas",
+    "slide2_title": "Your Perfect Escape in the Atlas",
+    "slide2_subtitle": "Discover the beauty of Bin-el-Ouidane Lake",
+    "slide3_title": "Luxury and Serenity by the Lake",
+    "slide3_subtitle": "An unforgettable experience awaits you"
+  },
+  "property": {
+    "title": "Your Perfect Escape",
+    "description": "This luxury guesthouse offers a seasonal outdoor pool with Atlas mountain views for incredible relaxation. Les Jardins Yasmina is a guesthouse located in a natural setting in the Berber countryside on the shores of Lake Bin-el-Ouidane, equipped with Wi-Fi coverage throughout the property. The accommodation has a 24/7 reception. The rooms feature both Berber and modern decor, with views of splendid landscapes.",
+    "features": {
+      "bedrooms": "5 bedrooms",
+      "bathrooms": "5 bathrooms",
+      "capacity": "Capacity 10 travelers",
+      "pool": "Seasonal pool"
+    }
+  },
+  "lake": {
+    "title": "Lake Bin-el-Ouidane",
+    "description": "Nestled in the heart of the Atlas, Lake Bin el Ouidane is undoubtedly one of the most impressive and beautiful landscapes in Morocco. This vast expanse of water covers nearly 4000 hectares and sits at over 800 meters altitude, making it the highest lake in Africa. Blending the blue of crystalline water, the ochre of surrounding lands and the green of regional olive trees, the landscape of Lake Bin el Ouidane is breathtaking."
+  },
+  "attractions": {
+    "title": "Sites to Visit",
+    "subtitle": "Discover the wonders of the region",
+    "musee": {
+      "name": "M'Goun Geopark Museum in Azilal",
+      "description": "Explore the geological and cultural richness of the M'Goun region"
+    },
+    "vallee": {
+      "name": "Ait Bougmez Valley",
+      "description": "Discover the \"happy valley\" with its authentic Berber villages"
+    },
+    "cascades": {
+      "name": "Ouzoud Waterfalls",
+      "description": "Admire the highest waterfalls in North Africa (110m)"
+    },
+    "gorges": {
+      "name": "Oued Ahansal Gorges",
+      "description": "Explore these spectacular gorges in the heart of the Atlas"
+    }
+  },
+  "activities": {
+    "title": "Sports & Leisure",
+    "subtitle": "Enjoy numerous activities",
+    "swimming": {
+      "name": "Swimming",
+      "description": "Enjoy our pool with Atlas views"
+    },
+    "hiking": {
+      "name": "Hiking",
+      "description": "Explore the surrounding mountain trails"
+    },
+    "boating": {
+      "name": "Boating",
+      "description": "Discover the lake by boat"
+    },
+    "fishing": {
+      "name": "Fishing",
+      "description": "Fish in the crystalline waters of the lake"
+    },
+    "cycling": {
+      "name": "Cycling",
+      "description": "Ride the scenic routes of the region"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "reception": "24/7 Reception",
+    "pool": "Pool",
+    "kitchen": "Kitchen",
+    "ac": "Air conditioning",
+    "wifi": "Free WiFi",
+    "parking": "Free parking"
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "subtitle": "What our guests say",
+    "main": "A warm welcome, a fantastic room, a splendid setting... A huge breakfast. Everything came together for a great weekend. Thank you for your hospitality and helpfulness. We will definitely return. Excellent value for money. We recommend to everyone!"
+  },
+  "virtual_tour": {
+    "title": "360° Virtual Tour",
+    "subtitle": "Explore our guesthouse",
+    "description": "Discover every corner of Les Jardins Yasmina with our immersive virtual tour. Visit the rooms, common areas and enjoy panoramic views from the comfort of your home.",
+    "start_tour": "Start Tour"
+  },
+  "reservation_widget": {
+    "title": "Book Your Stay",
+    "check_in": "Check-in",
+    "check_out": "Check-out",
+    "select_room": "Select a room",
+    "total": "Total",
+    "nights": "nights"
+  },
+  "reservation_page": {
+    "title": "Reservation",
+    "subtitle": "Book your dream stay",
+    "step1": "Dates & Rooms",
+    "step2": "Information",
+    "step3": "Confirmation",
+    "guest_info": "Guest Information",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "special_requests": "Special Requests",
+    "confirm_booking": "Confirm Booking",
+    "booking_confirmed": "Booking Confirmed!",
+    "confirmation_message": "Thank you for your reservation. You will receive a confirmation email shortly.",
+    "back_to_home": "Back to Home"
+  },
+  "rooms_page": {
+    "title": "Our Rooms",
+    "subtitle": "Berber comfort and elegance",
+    "amenities": "Amenities",
+    "capacity_label": "Capacity",
+    "size_label": "Size",
+    "sqm": "sqm"
+  },
+  "gallery_page": {
+    "title": "Photo Gallery",
+    "subtitle": "Discover our guesthouse",
+    "categories": {
+      "all": "All",
+      "rooms": "Rooms",
+      "exterior": "Exterior",
+      "pool": "Pool",
+      "views": "Views",
+      "dining": "Dining"
+    }
+  },
+  "activities_page": {
+    "title": "Activities & Leisure",
+    "subtitle": "Make the most of your stay",
+    "nearby_title": "Nearby Attractions"
+  },
+  "contact_page": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "send": "Send",
+    "success_message": "Message sent successfully!",
+    "info_title": "Information",
+    "address": "Address",
+    "address_value": "Lake Bin-el-Ouidane, Atlas, Morocco"
+  },
+  "footer": {
+    "description": "Luxury guesthouse on the shores of Lake Bin-el-Ouidane in the Moroccan Atlas.",
+    "quick_links": "Quick Links",
+    "follow_us": "Follow Us",
+    "rights": "All rights reserved"
+  }
+}

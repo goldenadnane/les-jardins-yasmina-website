@@ -1,0 +1,177 @@
+{
+  "common": {
+    "home": "Accueil",
+    "reservation": "Réservation",
+    "rooms": "Chambres",
+    "gallery": "Galerie",
+    "activities": "Activités",
+    "contact": "Contact",
+    "book_now": "Réserver maintenant",
+    "learn_more": "En savoir plus",
+    "view_all": "Voir tout",
+    "submit": "Envoyer",
+    "close": "Fermer",
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "success": "Succès",
+    "adults": "Adultes",
+    "children": "Enfants",
+    "guests": "Voyageurs",
+    "per_night": "par nuit",
+    "from": "À partir de"
+  },
+  "hero": {
+    "slide1_title": "Bienvenue chez nous ! Maison d'hôtes Les jardins yasmina",
+    "slide1_subtitle": "Votre refuge de luxe dans l'Atlas marocain",
+    "slide2_title": "Votre évasion parfaite dans l'Atlas",
+    "slide2_subtitle": "Découvrez la beauté du lac Bin-el-Ouidane",
+    "slide3_title": "Luxe et sérénité au bord du lac",
+    "slide3_subtitle": "Une expérience inoubliable vous attend"
+  },
+  "property": {
+    "title": "Votre évasion parfaite",
+    "description": "Cette maison d'hôtes luxueuse met à votre disposition une piscine extérieure ouverte en saison avec une vue sur les montagnes de l'Atlas pour une détente incroyable. Les jardins Yasmina est une maison d'hôtes située dans un endroit naturel en pleine campagne berbère pieds dans l'eau du lac Bin-el-Ouidane, dotée d'une connexion Wi-Fi qui couvre l'ensemble de la maison d'hôtes. L'hébergement dispose d'une réception ouverte 24/24h. Dans la maison d'hôtes les chambres sont d'une décoration berbère et moderne à la fois, avec une vue sur des paysages splendides.",
+    "features": {
+      "bedrooms": "5 chambres",
+      "bathrooms": "5 salles de bain",
+      "capacity": "Capacité 10 voyageurs",
+      "pool": "Piscine saisonnière"
+    }
+  },
+  "lake": {
+    "title": "Le Lac Bin-el-Ouidane",
+    "description": "Niché au cœur de l'Atlas, le lac Bin el Ouidane fait sans aucun doute partie des paysages les plus impressionnants et les plus beaux du Maroc. Cette immense étendue d'eau couvre près de 4000 hectares et est juchée à plus de 800 mètres d'altitude ce qui en fait le lac le plus haut d'Afrique. Mêlant le bleu de l'eau cristalline, l'ocre des terres alentours et le vert des oliviers de la région, le paysage du lac Bin el Ouidane est à couper le souffle."
+  },
+  "attractions": {
+    "title": "Sites à visiter",
+    "subtitle": "Découvrez les merveilles de la région",
+    "musee": {
+      "name": "Musée du Géoparc du M'Goun à Azilal",
+      "description": "Explorez la richesse géologique et culturelle de la région du M'Goun"
+    },
+    "vallee": {
+      "name": "Vallée Ait Bougmez",
+      "description": "Découvrez la \"vallée heureuse\" avec ses villages berbères authentiques"
+    },
+    "cascades": {
+      "name": "Cascades d'Ouzoud",
+      "description": "Admirez les plus hautes cascades d'Afrique du Nord (110m)"
+    },
+    "gorges": {
+      "name": "Gorges de l'oued Ahansal",
+      "description": "Explorez ces gorges spectaculaires au cœur de l'Atlas"
+    }
+  },
+  "activities": {
+    "title": "Sports & Loisirs",
+    "subtitle": "Profitez de nombreuses activités",
+    "swimming": {
+      "name": "Natation",
+      "description": "Profitez de notre piscine avec vue sur l'Atlas"
+    },
+    "hiking": {
+      "name": "Randonnée",
+      "description": "Explorez les sentiers de montagne environnants"
+    },
+    "boating": {
+      "name": "Navigation",
+      "description": "Découvrez le lac en bateau"
+    },
+    "fishing": {
+      "name": "Pêche",
+      "description": "Pêchez dans les eaux cristallines du lac"
+    },
+    "cycling": {
+      "name": "Cyclisme",
+      "description": "Parcourez les routes panoramiques de la région"
+    }
+  },
+  "services": {
+    "title": "Nos Services",
+    "reception": "Réception 24h/24",
+    "pool": "Piscine",
+    "kitchen": "Cuisine",
+    "ac": "Air conditionné",
+    "wifi": "Internet gratuit WiFi",
+    "parking": "Parking gratuit"
+  },
+  "testimonials": {
+    "title": "Témoignages",
+    "subtitle": "Ce que disent nos clients",
+    "main": "Un accueil chaleureux, une chambre topissime, un cadre splendide... Un petit déjeuner gargantuesque. Tout était réuni pour un super we. Merci de votre accueil et de votre serviabilité. Nous reviendrons, c'est certain. Très bon rapport qualité prix. Nous recommandons à tous !"
+  },
+  "virtual_tour": {
+    "title": "Visite Virtuelle 360°",
+    "subtitle": "Explorez notre maison d'hôtes",
+    "description": "Découvrez chaque recoin de Les Jardins Yasmina avec notre visite virtuelle immersive. Visitez les chambres, les espaces communs et profitez des vues panoramiques depuis le confort de votre maison.",
+    "start_tour": "Commencer la visite"
+  },
+  "reservation_widget": {
+    "title": "Réservez votre séjour",
+    "check_in": "Arrivée",
+    "check_out": "Départ",
+    "select_room": "Choisir une chambre",
+    "total": "Total",
+    "nights": "nuits"
+  },
+  "reservation_page": {
+    "title": "Réservation",
+    "subtitle": "Réservez votre séjour de rêve",
+    "step1": "Dates et chambres",
+    "step2": "Informations",
+    "step3": "Confirmation",
+    "guest_info": "Informations du client",
+    "name": "Nom complet",
+    "email": "Email",
+    "phone": "Téléphone",
+    "special_requests": "Demandes spéciales",
+    "confirm_booking": "Confirmer la réservation",
+    "booking_confirmed": "Réservation confirmée !",
+    "confirmation_message": "Merci pour votre réservation. Vous recevrez un email de confirmation sous peu.",
+    "back_to_home": "Retour à l'accueil"
+  },
+  "rooms_page": {
+    "title": "Nos Chambres",
+    "subtitle": "Confort et élégance berbère",
+    "amenities": "Équipements",
+    "capacity_label": "Capacité",
+    "size_label": "Superficie",
+    "sqm": "m²"
+  },
+  "gallery_page": {
+    "title": "Galerie Photos",
+    "subtitle": "Découvrez notre maison d'hôtes",
+    "categories": {
+      "all": "Tout",
+      "rooms": "Chambres",
+      "exterior": "Extérieur",
+      "pool": "Piscine",
+      "views": "Vues",
+      "dining": "Restaurant"
+    }
+  },
+  "activities_page": {
+    "title": "Activités & Loisirs",
+    "subtitle": "Profitez de votre séjour au maximum",
+    "nearby_title": "Attractions à proximité"
+  },
+  "contact_page": {
+    "title": "Contactez-nous",
+    "subtitle": "Nous sommes à votre écoute",
+    "name": "Nom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "message": "Message",
+    "send": "Envoyer",
+    "success_message": "Message envoyé avec succès !",
+    "info_title": "Informations",
+    "address": "Adresse",
+    "address_value": "Lac Bin-el-Ouidane, Atlas, Maroc"
+  },
+  "footer": {
+    "description": "Maison d'hôtes de luxe au bord du lac Bin-el-Ouidane dans l'Atlas marocain.",
+    "quick_links": "Liens rapides",
+    "follow_us": "Suivez-nous",
+    "rights": "Tous droits réservés"
+  }
+}
