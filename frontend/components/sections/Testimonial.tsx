@@ -20,7 +20,9 @@ export function Testimonial() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t("testimonials.title")}
             </h2>
-            <p className="text-lg text-black">{t("testimonials.subtitle")}</p>
+            <p className="text-lg text-muted-foreground">
+              {t("testimonials.subtitle")}
+            </p>
           </div>
 
           <Card className="p-8 md:p-12 relative overflow-hidden">

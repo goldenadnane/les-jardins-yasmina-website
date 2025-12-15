@@ -1,31 +1,31 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { Calendar, Users } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { Calendar, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export function ReservationWidget() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [checkIn, setCheckIn] = useState('');
-  const [checkOut, setCheckOut] = useState('');
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate('/reservation', {
-      state: { checkIn, checkOut, adults, children }
+    navigate("/reservation", {
+      state: { checkIn, checkOut, adults, children },
     });
   };
 
   return (
     <Card className="p-6 bg-card/95 backdrop-blur-sm border-border shadow-xl">
-      <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-        {t('reservation_widget.title')}
+      <h3 className="text-2xl font-bold mb-6 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+        {t("reservation_widget.title")}
       </h3>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -33,7 +33,7 @@ export function ReservationWidget() {
           <div>
             <Label htmlFor="check-in" className="flex items-center gap-2 mb-2">
               <Calendar className="h-4 w-4" />
-              {t('reservation_widget.check_in')}
+              {t("reservation_widget.check_in")}
             </Label>
             <Input
               id="check-in"
@@ -48,7 +48,7 @@ export function ReservationWidget() {
           <div>
             <Label htmlFor="check-out" className="flex items-center gap-2 mb-2">
               <Calendar className="h-4 w-4" />
-              {t('reservation_widget.check_out')}
+              {t("reservation_widget.check_out")}
             </Label>
             <Input
               id="check-out"
@@ -65,7 +65,7 @@ export function ReservationWidget() {
           <div>
             <Label htmlFor="adults" className="flex items-center gap-2 mb-2">
               <Users className="h-4 w-4" />
-              {t('common.adults')}
+              {t("common.adults")}
             </Label>
             <Input
               id="adults"
@@ -80,7 +80,7 @@ export function ReservationWidget() {
 
           <div>
             <Label htmlFor="children" className="mb-2 block">
-              {t('common.children')}
+              {t("common.children")}
             </Label>
             <Input
               id="children"
@@ -95,10 +95,10 @@ export function ReservationWidget() {
 
         <Button
           type="submit"
-          className="w-full bg-gradient-to-r from-primary to-primary/80 hover:opacity-90 transition-opacity"
+          className="w-full bg-linear-to-r from-primary to-primary/80 hover:opacity-90 transition-opacity"
           size="lg"
         >
-          {t('common.book_now')}
+          {t("common.book_now")}
         </Button>
       </form>
     </Card>

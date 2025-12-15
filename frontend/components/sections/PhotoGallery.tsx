@@ -40,7 +40,9 @@ export function PhotoGallery() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t("gallery_page.title")}
             </h2>
-            <p className="text-lg text-black">{t("gallery_page.subtitle")}</p>
+            <p className="text-lg text-muted-foreground">
+              {t("gallery_page.subtitle")}
+            </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">

@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { useSupabaseInsert } from "../hooks/useSupabase";
 import type { ContactMessage } from "../types";
+import { AnimatedLayout } from "@/components/layout/AnimatedLayout";
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -52,138 +53,140 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            {t("contact_page.title")}
-          </h1>
-          <p className="text-lg text-foreground/70">
-            {t("contact_page.subtitle")}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            <Card className="p-6 md:p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <Label htmlFor="name">{t("contact_page.name")}</Label>
-                  <Input
-                    id="name"
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="email">{t("contact_page.email")}</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="phone">{t("contact_page.phone")}</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="message">{t("contact_page.message")}</Label>
-                  <Textarea
-                    id="message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    rows={6}
-                    required
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full bg-gradient-to-r from-primary to-primary/80"
-                  size="lg"
-                >
-                  {loading ? t("common.loading") : t("contact_page.send")}
-                </Button>
-              </form>
-            </Card>
+    <AnimatedLayout pageType="contact">
+      <div className="min-h-screen pt-32 pb-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              {t("contact_page.title")}
+            </h1>
+            <p className="text-lg text-foreground/70">
+              {t("contact_page.subtitle")}
+            </p>
           </div>
 
-          <div className="space-y-6">
-            <Card className="p-6">
-              <h3 className="text-xl font-bold mb-6">
-                {t("contact_page.info_title")}
-              </h3>
-
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <MapPin className="h-5 w-5 text-primary" />
-                  </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2">
+              <Card className="p-6 md:p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <p className="font-semibold mb-1">
-                      {t("contact_page.address")}
-                    </p>
-                    <p className="text-sm text-foreground/70">
-                      {t("contact_page.address_value")}
-                    </p>
+                    <Label htmlFor="name">{t("contact_page.name")}</Label>
+                    <Input
+                      id="name"
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="email">{t("contact_page.email")}</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="phone">{t("contact_page.phone")}</Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="message">{t("contact_page.message")}</Label>
+                    <Textarea
+                      id="message"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      rows={6}
+                      required
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full bg-linear-to-r from-primary to-primary/80"
+                    size="lg"
+                  >
+                    {loading ? t("common.loading") : t("contact_page.send")}
+                  </Button>
+                </form>
+              </Card>
+            </div>
+
+            <div className="space-y-6">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-6">
+                  {t("contact_page.info_title")}
+                </h3>
+
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <MapPin className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-1">
+                        {t("contact_page.address")}
+                      </p>
+                      <p className="text-sm text-foreground/70">
+                        {t("contact_page.address_value")}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <Phone className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-1">
+                        {t("contact_page.phone")}
+                      </p>
+                      <p className="text-sm text-foreground/70">
+                        +212 XXX XXX XXX
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <Mail className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-1">
+                        {t("contact_page.email")}
+                      </p>
+                      <p className="text-sm text-foreground/70">
+                        contact@jardinsyasmina.com
+                      </p>
+                    </div>
                   </div>
                 </div>
+              </Card>
 
-                <div className="flex items-start gap-4">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <Phone className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold mb-1">
-                      {t("contact_page.phone")}
-                    </p>
-                    <p className="text-sm text-foreground/70">
-                      +212 XXX XXX XXX
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <Mail className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold mb-1">
-                      {t("contact_page.email")}
-                    </p>
-                    <p className="text-sm text-foreground/70">
-                      contact@jardinsyasmina.com
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-6 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-              <h3 className="text-xl font-bold mb-4">
-                {t("services.reception")}
-              </h3>
-              <p className="text-sm text-foreground/70">
-                {t("property.description").substring(0, 150)}...
-              </p>
-            </Card>
+              <Card className="p-6 bg-linear-to-br from-primary/5 to-primary/10 border-primary/20">
+                <h3 className="text-xl font-bold mb-4">
+                  {t("services.reception")}
+                </h3>
+                <p className="text-sm text-foreground/70">
+                  {t("property.description").substring(0, 150)}...
+                </p>
+              </Card>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </AnimatedLayout>
   );
 }

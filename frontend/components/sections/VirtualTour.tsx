@@ -20,7 +20,9 @@ export function VirtualTour() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t("virtual_tour.title")}
             </h2>
-            <p className="text-lg mb-2">{t("virtual_tour.subtitle")}</p>
+            <p className="text-lg text-muted-foreground mb-2">
+              {t("virtual_tour.subtitle")}
+            </p>
           </div>
 
           <div className="relative rounded-2xl overflow-hidden group cursor-pointer aspect-video">
@@ -36,7 +38,7 @@ export function VirtualTour() {
                 </div>
                 <Button
                   size="lg"
-                  className="bg-white text-black hover:bg-white/90"
+                  className="bg-primary text-foreground"
                 >
                   {t("virtual_tour.start_tour")}
                 </Button>

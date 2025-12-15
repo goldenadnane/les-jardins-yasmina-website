@@ -1,5 +1,5 @@
-import { useTranslation } from 'react-i18next';
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { useTranslation } from "react-i18next";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
 export function LakeDescription() {
   const { t } = useTranslation();
@@ -10,7 +10,8 @@ export function LakeDescription() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80)',
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80)",
         }}
       >
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
@@ -20,18 +21,16 @@ export function LakeDescription() {
         <div
           ref={ref}
           className={`transition-all duration-1000 ${
-            isVisible
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-10'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <div className="bg-card/90 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-border shadow-2xl">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              {t('lake.title')}
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              {t("lake.title")}
             </h2>
 
-            <p className="text-lg leading-relaxed text-foreground">
-              {t('lake.description')}
+            <p className="text-lg leading-relaxed text-card-foreground">
+              {t("lake.description")}
             </p>
           </div>
         </div>

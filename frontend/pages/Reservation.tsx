@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { useSupabaseInsert } from "../hooks/useSupabase";
 import type { Reservation } from "../types";
+import { AnimatedLayout } from "@/components/layout/AnimatedLayout";
 
 export default function ReservationPage() {
   const { t } = useTranslation();
@@ -82,10 +83,11 @@ export default function ReservationPage() {
   const total = nights * pricePerNight;
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-4 bg-gradient-to-b from-muted/30 to-background">
+        <AnimatedLayout pageType="reservation">
+    <div className="min-h-screen pt-32 pb-20 px-4 bg-linear-to-b from-muted/30 to-background">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             {t("reservation_page.title")}
           </h1>
           <p className="text-lg text-foreground/70">
@@ -140,7 +142,7 @@ export default function ReservationPage() {
             <Button
               size="lg"
               onClick={() => navigate("/")}
-              className="bg-gradient-to-r from-primary to-primary/80"
+              className="bg-linear-to-r from-primary to-primary/80"
             >
               {t("reservation_page.back_to_home")}
             </Button>
@@ -300,7 +302,7 @@ export default function ReservationPage() {
                     <Button
                       type="submit"
                       disabled={loading}
-                      className="flex-1 bg-gradient-to-r from-primary to-primary/80"
+                      className="flex-1 bg-linear-to-r from-primary to-primary/80"
                     >
                       {step === 1
                         ? t("common.continue")
@@ -371,5 +373,7 @@ export default function ReservationPage() {
         )}
       </div>
     </div>
+        </AnimatedLayout>
+
   );
 }

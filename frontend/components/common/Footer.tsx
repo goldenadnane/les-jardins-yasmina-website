@@ -50,17 +50,17 @@ export function Footer() {
             </h4>
             <ul className="space-y-3">
               <li className="flex items-start space-x-2 text-sm">
-                <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                 <span className="text-foreground/70">
                   {t("contact_page.address_value")}
                 </span>
               </li>
               <li className="flex items-center space-x-2 text-sm">
-                <Phone className="h-5 w-5 text-primary flex-shrink-0" />
+                <Phone className="h-5 w-5 text-primary shrink-0" />
                 <span className="text-foreground/70">+212 XXX XXX XXX</span>
               </li>
               <li className="flex items-center space-x-2 text-sm">
-                <Mail className="h-5 w-5 text-primary flex-shrink-0" />
+                <Mail className="h-5 w-5 text-primary shrink-0" />
                 <span className="text-foreground/70">
                   contact@jardinsyasmina.com
                 </span>

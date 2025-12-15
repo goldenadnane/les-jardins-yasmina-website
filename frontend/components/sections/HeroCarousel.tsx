@@ -65,16 +65,16 @@ export function HeroCarousel() {
 
           <div className="relative h-full flex items-center justify-center text-center px-4">
             <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight text-overlay-contrast">
                 {slide.title}
               </h1>
-              <p className="text-xl md:text-2xl text-white/20 mb-8">
+              <p className="text-xl md:text-2xl text-white/80 mb-8 text-overlay-contrast">
                 {slide.subtitle}
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-linear-to-r from-primary to-primary/80 hover:opacity-90 transition-opacity"
+                  className="bg-linear-to-r from-primary to-primary/80"
                   asChild
                 >
                   <a href="/reservation">{t("common.book_now")}</a>
@@ -82,7 +82,7 @@ export function HeroCarousel() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
+                  className="bg-white/10 backdrop-blur-sm border-white/20 text-white"
                   onClick={() => {
                     document
                       .getElementById("property-section")

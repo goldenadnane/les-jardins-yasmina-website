@@ -48,7 +48,9 @@ export function SportsLeisure() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t("activities.title")}
             </h2>
-            <p className="text-lg text-black">{t("activities.subtitle")}</p>
+            <p className="text-lg text-muted-foreground">
+              {t("activities.subtitle")}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -34,7 +34,7 @@ export function PropertyDescription() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             {t("property.title")}
           </h2>
 
@@ -53,7 +53,9 @@ export function PropertyDescription() {
                   <div className="p-3 bg-primary/10 rounded-full mb-4">
                     <Icon className="h-6 w-6 text-primary" />
                   </div>
-                  <p className="text-center font-medium">{feature.text}</p>
+                  <p className="text-center font-medium text-muted-foreground">
+                    {feature.text}
+                  </p>
                 </div>
               );
             })}

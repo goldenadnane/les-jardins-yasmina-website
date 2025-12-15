@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AnimatedLayout } from "@/components/layout/AnimatedLayout";
 
 const categories = [
   "all",
@@ -87,75 +88,79 @@ export default function Gallery() {
       : galleryImages.filter((img) => img.category === selectedCategory);
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-4">
-      <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            {t("gallery_page.title")}
-          </h1>
-          <p className="text-lg text-foreground/70 mb-8">
-            {t("gallery_page.subtitle")}
-          </p>
+    <AnimatedLayout pageType="gallery">
+      <div className="min-h-screen pt-32 pb-20 px-4">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              {t("gallery_page.title")}
+            </h1>
+            <p className="text-lg text-foreground/70 mb-8">
+              {t("gallery_page.subtitle")}
+            </p>
 
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={selectedCategory === category ? "default" : "outline"}
-                onClick={() => setSelectedCategory(category)}
-                className={
-                  selectedCategory === category
-                    ? "bg-gradient-to-r from-primary to-primary/80"
-                    : ""
-                }
+            <div className="flex flex-wrap justify-center gap-3">
+              {categories.map((category) => (
+                <Button
+                  key={category}
+                  variant={
+                    selectedCategory === category ? "default" : "outline"
+                  }
+                  onClick={() => setSelectedCategory(category)}
+                  className={
+                    selectedCategory === category
+                      ? "bg-linear-to-r from-primary to-primary/80"
+                      : ""
+                  }
+                >
+                  {t(`gallery_page.categories.${category}`)}
+                </Button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {filteredImages.map((image, index) => (
+              <div
+                key={index}
+                className="relative group cursor-pointer overflow-hidden rounded-lg aspect-square"
+                onClick={() => setSelectedImage(image.url)}
               >
-                {t(`gallery_page.categories.${category}`)}
-              </Button>
+                <img
+                  src={`${image.url}?w=400&h=400&fit=crop`}
+                  alt={`Gallery ${index + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="text-white font-semibold">
+                    {t(`gallery_page.categories.${image.category}`)}
+                  </span>
+                </div>
+              </div>
             ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filteredImages.map((image, index) => (
-            <div
-              key={index}
-              className="relative group cursor-pointer overflow-hidden rounded-lg aspect-square"
-              onClick={() => setSelectedImage(image.url)}
-            >
-              <img
-                src={`${image.url}?w=400&h=400&fit=crop`}
-                alt={`Gallery ${index + 1}`}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="text-white font-semibold">
-                  {t(`gallery_page.categories.${image.category}`)}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button
-            className="absolute top-4 right-4 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+        {selectedImage && (
+          <div
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
             onClick={() => setSelectedImage(null)}
           >
-            <X className="h-6 w-6 text-white" />
-          </button>
-          <img
-            src={`${selectedImage}?w=1200&q=90`}
-            alt="Gallery"
-            className="max-w-full max-h-full object-contain"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
-    </div>
+            <button
+              className="absolute top-4 right-4 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X className="h-6 w-6 text-white" />
+            </button>
+            <img
+              src={`${selectedImage}?w=1200&q=90`}
+              alt="Gallery"
+              className="max-w-full max-h-full object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        )}
+      </div>
+    </AnimatedLayout>
   );
 }
