@@ -1,13 +1,13 @@
-import { useTranslation } from 'react-i18next';
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
-import { MapPin } from 'lucide-react';
-import { Card } from '@/components/ui/card';
+import { useTranslation } from "react-i18next";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import { MapPin } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 const attractionImages = [
-  'https://images.unsplash.com/photo-1585159812596-fac104f2f069',
-  'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800',
-  'https://images.unsplash.com/photo-1433086966358-54859d0ed716',
-  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4'
+  "https://images.unsplash.com/photo-1585159812596-fac104f2f069",
+  "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800",
+  "https://images.unsplash.com/photo-1433086966358-54859d0ed716",
+  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
 ];
 
 export function SitesToVisit() {
@@ -16,25 +16,25 @@ export function SitesToVisit() {
 
   const attractions = [
     {
-      name: t('attractions.musee.name'),
-      description: t('attractions.musee.description'),
-      image: attractionImages[0]
+      name: t("attractions.musee.name"),
+      description: t("attractions.musee.description"),
+      image: attractionImages[0],
     },
     {
-      name: t('attractions.vallee.name'),
-      description: t('attractions.vallee.description'),
-      image: attractionImages[1]
+      name: t("attractions.vallee.name"),
+      description: t("attractions.vallee.description"),
+      image: attractionImages[1],
     },
     {
-      name: t('attractions.cascades.name'),
-      description: t('attractions.cascades.description'),
-      image: attractionImages[2]
+      name: t("attractions.cascades.name"),
+      description: t("attractions.cascades.description"),
+      image: attractionImages[2],
     },
     {
-      name: t('attractions.gorges.name'),
-      description: t('attractions.gorges.description'),
-      image: attractionImages[3]
-    }
+      name: t("attractions.gorges.name"),
+      description: t("attractions.gorges.description"),
+      image: attractionImages[3],
+    },
   ];
 
   return (
@@ -43,18 +43,14 @@ export function SitesToVisit() {
         <div
           ref={ref}
           className={`transition-all duration-1000 ${
-            isVisible
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-10'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              {t('attractions.title')}
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              {t("attractions.title")}
             </h2>
-            <p className="text-lg text-muted-foreground">
-              {t('attractions.subtitle')}
-            </p>
+            <p className="text-lg">{t("attractions.subtitle")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -77,9 +73,7 @@ export function SitesToVisit() {
                     <MapPin className="h-5 w-5 text-primary" />
                     {attraction.name}
                   </h3>
-                  <p className="text-muted-foreground">
-                    {attraction.description}
-                  </p>
+                  <p className="text-foreground/70">{attraction.description}</p>
                 </div>
               </Card>
             ))}

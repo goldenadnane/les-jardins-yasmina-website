@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const heroImages = [
-  'https://images.unsplash.com/photo-1566073771259-6a8506099945',
-  'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b',
-  'https://images.unsplash.com/photo-1571896349842-33c89424de2d'
+  "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+  "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",
+  "https://images.unsplash.com/photo-1571896349842-33c89424de2d",
 ];
 
 export function HeroCarousel() {
@@ -16,19 +16,19 @@ export function HeroCarousel() {
   const slides = [
     {
       image: heroImages[0],
-      title: t('hero.slide1_title'),
-      subtitle: t('hero.slide1_subtitle')
+      title: t("hero.slide1_title"),
+      subtitle: t("hero.slide1_subtitle"),
     },
     {
       image: heroImages[1],
-      title: t('hero.slide2_title'),
-      subtitle: t('hero.slide2_subtitle')
+      title: t("hero.slide2_title"),
+      subtitle: t("hero.slide2_subtitle"),
     },
     {
       image: heroImages[2],
-      title: t('hero.slide3_title'),
-      subtitle: t('hero.slide3_subtitle')
-    }
+      title: t("hero.slide3_title"),
+      subtitle: t("hero.slide3_subtitle"),
+    },
   ];
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export function HeroCarousel() {
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
+            index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
           <div
@@ -65,31 +65,33 @@ export function HeroCarousel() {
 
           <div className="relative h-full flex items-center justify-center text-center px-4">
             <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
                 {slide.title}
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 mb-8">
+              <p className="text-xl md:text-2xl text-white/20 mb-8">
                 {slide.subtitle}
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-primary to-primary/80 hover:opacity-90 transition-opacity"
+                  className="bg-linear-to-r from-primary to-primary/80 hover:opacity-90 transition-opacity"
                   asChild
                 >
-                  <a href="/reservation">{t('common.book_now')}</a>
+                  <a href="/reservation">{t("common.book_now")}</a>
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
                   className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20"
                   onClick={() => {
-                    document.getElementById('property-section')?.scrollIntoView({
-                      behavior: 'smooth'
-                    });
+                    document
+                      .getElementById("property-section")
+                      ?.scrollIntoView({
+                        behavior: "smooth",
+                      });
                   }}
                 >
-                  {t('common.learn_more')}
+                  {t("common.learn_more")}
                 </Button>
               </div>
             </div>
@@ -118,8 +120,8 @@ export function HeroCarousel() {
             onClick={() => setCurrentSlide(index)}
             className={`w-3 h-3 rounded-full transition-all ${
               index === currentSlide
-                ? 'bg-white w-8'
-                : 'bg-white/50 hover:bg-white/75'
+                ? "bg-white w-8"
+                : "bg-white hover:bg-white/75"
             }`}
           />
         ))}

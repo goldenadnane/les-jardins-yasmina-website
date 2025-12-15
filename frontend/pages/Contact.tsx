@@ -1,24 +1,25 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Mail, MapPin, Phone } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/components/ui/use-toast';
-import { useSupabaseInsert } from '../hooks/useSupabase';
-import type { ContactMessage } from '../types';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/ui/use-toast";
+import { useSupabaseInsert } from "../hooks/useSupabase";
+import type { ContactMessage } from "../types";
 
 export default function Contact() {
   const { t } = useTranslation();
   const { toast } = useToast();
-  const { insert, loading } = useSupabaseInsert<ContactMessage>('contact_messages');
+  const { insert, loading } =
+    useSupabaseInsert<ContactMessage>("contact_messages");
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,24 +29,24 @@ export default function Contact() {
         name,
         email,
         phone,
-        message
+        message,
       });
 
       toast({
-        title: t('common.success'),
-        description: t('contact_page.success_message')
+        title: t("common.success"),
+        description: t("contact_page.success_message"),
       });
 
-      setName('');
-      setEmail('');
-      setPhone('');
-      setMessage('');
+      setName("");
+      setEmail("");
+      setPhone("");
+      setMessage("");
     } catch (error) {
-      console.error('Contact form error:', error);
+      console.error("Contact form error:", error);
       toast({
-        title: t('common.error'),
-        description: t('common.error'),
-        variant: 'destructive'
+        title: t("common.error"),
+        description: t("common.error"),
+        variant: "destructive",
       });
     }
   };
@@ -55,10 +56,10 @@ export default function Contact() {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            {t('contact_page.title')}
+            {t("contact_page.title")}
           </h1>
-          <p className="text-lg text-muted-foreground">
-            {t('contact_page.subtitle')}
+          <p className="text-lg text-foreground/70">
+            {t("contact_page.subtitle")}
           </p>
         </div>
 
@@ -67,7 +68,7 @@ export default function Contact() {
             <Card className="p-6 md:p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <Label htmlFor="name">{t('contact_page.name')}</Label>
+                  <Label htmlFor="name">{t("contact_page.name")}</Label>
                   <Input
                     id="name"
                     type="text"
@@ -78,7 +79,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <Label htmlFor="email">{t('contact_page.email')}</Label>
+                  <Label htmlFor="email">{t("contact_page.email")}</Label>
                   <Input
                     id="email"
                     type="email"
@@ -89,7 +90,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <Label htmlFor="phone">{t('contact_page.phone')}</Label>
+                  <Label htmlFor="phone">{t("contact_page.phone")}</Label>
                   <Input
                     id="phone"
                     type="tel"
@@ -99,7 +100,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <Label htmlFor="message">{t('contact_page.message')}</Label>
+                  <Label htmlFor="message">{t("contact_page.message")}</Label>
                   <Textarea
                     id="message"
                     value={message}
@@ -115,7 +116,7 @@ export default function Contact() {
                   className="w-full bg-gradient-to-r from-primary to-primary/80"
                   size="lg"
                 >
-                  {loading ? t('common.loading') : t('contact_page.send')}
+                  {loading ? t("common.loading") : t("contact_page.send")}
                 </Button>
               </form>
             </Card>
@@ -124,7 +125,7 @@ export default function Contact() {
           <div className="space-y-6">
             <Card className="p-6">
               <h3 className="text-xl font-bold mb-6">
-                {t('contact_page.info_title')}
+                {t("contact_page.info_title")}
               </h3>
 
               <div className="space-y-4">
@@ -134,10 +135,10 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-semibold mb-1">
-                      {t('contact_page.address')}
+                      {t("contact_page.address")}
                     </p>
-                    <p className="text-sm text-muted-foreground">
-                      {t('contact_page.address_value')}
+                    <p className="text-sm text-foreground/70">
+                      {t("contact_page.address_value")}
                     </p>
                   </div>
                 </div>
@@ -148,9 +149,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-semibold mb-1">
-                      {t('contact_page.phone')}
+                      {t("contact_page.phone")}
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-foreground/70">
                       +212 XXX XXX XXX
                     </p>
                   </div>
@@ -162,9 +163,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-semibold mb-1">
-                      {t('contact_page.email')}
+                      {t("contact_page.email")}
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-foreground/70">
                       contact@jardinsyasmina.com
                     </p>
                   </div>
@@ -174,10 +175,10 @@ export default function Contact() {
 
             <Card className="p-6 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
               <h3 className="text-xl font-bold mb-4">
-                {t('services.reception')}
+                {t("services.reception")}
               </h3>
-              <p className="text-sm text-muted-foreground">
-                {t('property.description').substring(0, 150)}...
+              <p className="text-sm text-foreground/70">
+                {t("property.description").substring(0, 150)}...
               </p>
             </Card>
           </div>

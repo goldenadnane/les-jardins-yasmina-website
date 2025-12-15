@@ -1,6 +1,6 @@
-import { useTranslation } from 'react-i18next';
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
-import { Bed, Bath, Users, Waves } from 'lucide-react';
+import { useTranslation } from "react-i18next";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import { Bed, Bath, Users, Waves } from "lucide-react";
 
 export function PropertyDescription() {
   const { t } = useTranslation();
@@ -9,20 +9,20 @@ export function PropertyDescription() {
   const features = [
     {
       icon: Bed,
-      text: t('property.features.bedrooms')
+      text: t("property.features.bedrooms"),
     },
     {
       icon: Bath,
-      text: t('property.features.bathrooms')
+      text: t("property.features.bathrooms"),
     },
     {
       icon: Users,
-      text: t('property.features.capacity')
+      text: t("property.features.capacity"),
     },
     {
       icon: Waves,
-      text: t('property.features.pool')
-    }
+      text: t("property.features.pool"),
+    },
   ];
 
   return (
@@ -31,17 +31,15 @@ export function PropertyDescription() {
         <div
           ref={ref}
           className={`transition-all duration-1000 ${
-            isVisible
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-10'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            {t('property.title')}
+            {t("property.title")}
           </h2>
 
           <p className="text-lg text-muted-foreground leading-relaxed mb-12 max-w-4xl mx-auto text-center">
-            {t('property.description')}
+            {t("property.description")}
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

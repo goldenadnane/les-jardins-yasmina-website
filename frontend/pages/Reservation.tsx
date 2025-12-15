@@ -1,34 +1,34 @@
-import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { format } from 'date-fns';
-import { Calendar, Users, CheckCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/components/ui/use-toast';
-import { useSupabaseInsert } from '../hooks/useSupabase';
-import type { Reservation } from '../types';
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { format } from "date-fns";
+import { Calendar, Users, CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/ui/use-toast";
+import { useSupabaseInsert } from "../hooks/useSupabase";
+import type { Reservation } from "../types";
 
 export default function ReservationPage() {
   const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { insert, loading } = useSupabaseInsert<Reservation>('reservations');
+  const { insert, loading } = useSupabaseInsert<Reservation>("reservations");
 
   const initialState = location.state || {};
   const [step, setStep] = useState(1);
-  const [checkIn, setCheckIn] = useState(initialState.checkIn || '');
-  const [checkOut, setCheckOut] = useState(initialState.checkOut || '');
+  const [checkIn, setCheckIn] = useState(initialState.checkIn || "");
+  const [checkOut, setCheckOut] = useState(initialState.checkOut || "");
   const [adults, setAdults] = useState(initialState.adults || 2);
   const [children, setChildren] = useState(initialState.children || 0);
-  const [guestName, setGuestName] = useState('');
-  const [guestEmail, setGuestEmail] = useState('');
-  const [guestPhone, setGuestPhone] = useState('');
-  const [specialRequests, setSpecialRequests] = useState('');
+  const [guestName, setGuestName] = useState("");
+  const [guestEmail, setGuestEmail] = useState("");
+  const [guestPhone, setGuestPhone] = useState("");
+  const [specialRequests, setSpecialRequests] = useState("");
   const [confirmed, setConfirmed] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -45,26 +45,26 @@ export default function ReservationPage() {
         check_out: checkOut,
         adults,
         children,
-        room_id: '1',
+        room_id: "1",
         guest_name: guestName,
         guest_email: guestEmail,
         guest_phone: guestPhone,
-        special_requests: specialRequests
+        special_requests: specialRequests,
       });
 
       setConfirmed(true);
       setStep(3);
 
       toast({
-        title: t('common.success'),
-        description: t('reservation_page.confirmation_message')
+        title: t("common.success"),
+        description: t("reservation_page.confirmation_message"),
       });
     } catch (error) {
-      console.error('Reservation error:', error);
+      console.error("Reservation error:", error);
       toast({
-        title: t('common.error'),
-        description: t('common.error'),
-        variant: 'destructive'
+        title: t("common.error"),
+        description: t("common.error"),
+        variant: "destructive",
       });
     }
   };
@@ -86,10 +86,10 @@ export default function ReservationPage() {
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            {t('reservation_page.title')}
+            {t("reservation_page.title")}
           </h1>
-          <p className="text-lg text-muted-foreground">
-            {t('reservation_page.subtitle')}
+          <p className="text-lg text-foreground/70">
+            {t("reservation_page.subtitle")}
           </p>
         </div>
 
@@ -98,13 +98,13 @@ export default function ReservationPage() {
             {[1, 2, 3].map((s) => (
               <div
                 key={s}
-                className={`flex items-center ${s < 3 ? 'flex-1' : ''}`}
+                className={`flex items-center ${s < 3 ? "flex-1" : ""}`}
               >
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-colors ${
                     s <= step
-                      ? 'bg-primary text-white'
-                      : 'bg-muted text-muted-foreground'
+                      ? "bg-primary text-white"
+                      : "bg-muted text-foreground/70"
                   }`}
                 >
                   {s}
@@ -112,7 +112,7 @@ export default function ReservationPage() {
                 {s < 3 && (
                   <div
                     className={`flex-1 h-1 mx-2 transition-colors ${
-                      s < step ? 'bg-primary' : 'bg-muted'
+                      s < step ? "bg-primary" : "bg-muted"
                     }`}
                   />
                 )}
@@ -120,9 +120,9 @@ export default function ReservationPage() {
             ))}
           </div>
           <div className="flex justify-between mt-2">
-            <span className="text-sm">{t('reservation_page.step1')}</span>
-            <span className="text-sm">{t('reservation_page.step2')}</span>
-            <span className="text-sm">{t('reservation_page.step3')}</span>
+            <span className="text-sm">{t("reservation_page.step1")}</span>
+            <span className="text-sm">{t("reservation_page.step2")}</span>
+            <span className="text-sm">{t("reservation_page.step3")}</span>
           </div>
         </div>
 
@@ -132,17 +132,17 @@ export default function ReservationPage() {
               <CheckCircle className="h-20 w-20 text-primary mx-auto" />
             </div>
             <h2 className="text-3xl font-bold mb-4">
-              {t('reservation_page.booking_confirmed')}
+              {t("reservation_page.booking_confirmed")}
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              {t('reservation_page.confirmation_message')}
+            <p className="text-lg text-foreground/70 mb-8">
+              {t("reservation_page.confirmation_message")}
             </p>
             <Button
               size="lg"
-              onClick={() => navigate('/')}
+              onClick={() => navigate("/")}
               className="bg-gradient-to-r from-primary to-primary/80"
             >
-              {t('reservation_page.back_to_home')}
+              {t("reservation_page.back_to_home")}
             </Button>
           </Card>
         ) : (
@@ -159,7 +159,7 @@ export default function ReservationPage() {
                             className="flex items-center gap-2 mb-2"
                           >
                             <Calendar className="h-4 w-4" />
-                            {t('reservation_widget.check_in')}
+                            {t("reservation_widget.check_in")}
                           </Label>
                           <Input
                             id="check-in"
@@ -176,7 +176,7 @@ export default function ReservationPage() {
                             className="flex items-center gap-2 mb-2"
                           >
                             <Calendar className="h-4 w-4" />
-                            {t('reservation_widget.check_out')}
+                            {t("reservation_widget.check_out")}
                           </Label>
                           <Input
                             id="check-out"
@@ -195,7 +195,7 @@ export default function ReservationPage() {
                             className="flex items-center gap-2 mb-2"
                           >
                             <Users className="h-4 w-4" />
-                            {t('common.adults')}
+                            {t("common.adults")}
                           </Label>
                           <Input
                             id="adults"
@@ -210,7 +210,7 @@ export default function ReservationPage() {
 
                         <div>
                           <Label htmlFor="children" className="mb-2 block">
-                            {t('common.children')}
+                            {t("common.children")}
                           </Label>
                           <Input
                             id="children"
@@ -230,12 +230,12 @@ export default function ReservationPage() {
                   {step === 2 && (
                     <div className="space-y-6">
                       <h3 className="text-xl font-bold">
-                        {t('reservation_page.guest_info')}
+                        {t("reservation_page.guest_info")}
                       </h3>
 
                       <div>
                         <Label htmlFor="name">
-                          {t('reservation_page.name')}
+                          {t("reservation_page.name")}
                         </Label>
                         <Input
                           id="name"
@@ -248,7 +248,7 @@ export default function ReservationPage() {
 
                       <div>
                         <Label htmlFor="email">
-                          {t('reservation_page.email')}
+                          {t("reservation_page.email")}
                         </Label>
                         <Input
                           id="email"
@@ -261,7 +261,7 @@ export default function ReservationPage() {
 
                       <div>
                         <Label htmlFor="phone">
-                          {t('reservation_page.phone')}
+                          {t("reservation_page.phone")}
                         </Label>
                         <Input
                           id="phone"
@@ -274,7 +274,7 @@ export default function ReservationPage() {
 
                       <div>
                         <Label htmlFor="requests">
-                          {t('reservation_page.special_requests')}
+                          {t("reservation_page.special_requests")}
                         </Label>
                         <Textarea
                           id="requests"
@@ -294,7 +294,7 @@ export default function ReservationPage() {
                         onClick={() => setStep(step - 1)}
                         className="flex-1"
                       >
-                        {t('common.back')}
+                        {t("common.back")}
                       </Button>
                     )}
                     <Button
@@ -303,10 +303,10 @@ export default function ReservationPage() {
                       className="flex-1 bg-gradient-to-r from-primary to-primary/80"
                     >
                       {step === 1
-                        ? t('common.continue')
+                        ? t("common.continue")
                         : loading
-                          ? t('common.loading')
-                          : t('reservation_page.confirm_booking')}
+                        ? t("common.loading")
+                        : t("reservation_page.confirm_booking")}
                     </Button>
                   </div>
                 </Card>
@@ -315,44 +315,42 @@ export default function ReservationPage() {
               <div className="lg:col-span-1">
                 <Card className="p-6 sticky top-24">
                   <h3 className="text-xl font-bold mb-6">
-                    {t('reservation_widget.title')}
+                    {t("reservation_widget.title")}
                   </h3>
 
                   <div className="space-y-4">
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">
-                        {t('reservation_widget.check_in')}
+                      <span className="text-foreground/70">
+                        {t("reservation_widget.check_in")}
                       </span>
                       <span className="font-medium">
                         {checkIn
-                          ? format(new Date(checkIn), 'MMM dd, yyyy')
-                          : '-'}
+                          ? format(new Date(checkIn), "MMM dd, yyyy")
+                          : "-"}
                       </span>
                     </div>
 
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">
-                        {t('reservation_widget.check_out')}
+                      <span className="text-foreground/70">
+                        {t("reservation_widget.check_out")}
                       </span>
                       <span className="font-medium">
                         {checkOut
-                          ? format(new Date(checkOut), 'MMM dd, yyyy')
-                          : '-'}
+                          ? format(new Date(checkOut), "MMM dd, yyyy")
+                          : "-"}
                       </span>
                     </div>
 
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">
-                        {t('common.guests')}
+                      <span className="text-foreground/70">
+                        {t("common.guests")}
                       </span>
-                      <span className="font-medium">
-                        {adults + children}
-                      </span>
+                      <span className="font-medium">{adults + children}</span>
                     </div>
 
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">
-                        {nights} {t('reservation_widget.nights')}
+                      <span className="text-foreground/70">
+                        {nights} {t("reservation_widget.nights")}
                       </span>
                       <span className="font-medium">
                         €{pricePerNight} × {nights}
@@ -361,7 +359,7 @@ export default function ReservationPage() {
 
                     <div className="border-t border-border pt-4">
                       <div className="flex justify-between text-lg font-bold">
-                        <span>{t('reservation_widget.total')}</span>
+                        <span>{t("reservation_widget.total")}</span>
                         <span className="text-primary">€{total}</span>
                       </div>
                     </div>

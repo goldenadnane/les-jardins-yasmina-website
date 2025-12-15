@@ -62,7 +62,7 @@ export default function Home() {
         <div className="fixed bottom-8 left-8 z-40 hidden lg:block animate-in slide-in-from-left duration-300">
           <Button
             size="lg"
-            className="bg-gradient-to-r from-primary to-primary/80 shadow-2xl hover:shadow-3xl transition-all"
+            className="bg-linear-to-r from-primary to-primary/80 shadow-2xl hover:shadow-3xl transition-all"
             asChild
           >
             <a href="/reservation">Réserver</a>

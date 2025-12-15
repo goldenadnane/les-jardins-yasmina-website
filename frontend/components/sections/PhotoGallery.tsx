@@ -1,25 +1,25 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
-import { X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
+import { X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const galleryImages = [
-  'https://images.unsplash.com/photo-1566073771259-6a8506099945',
-  'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b',
-  'https://images.unsplash.com/photo-1571896349842-33c89424de2d',
-  'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6',
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
-  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9',
-  'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c',
-  'https://images.unsplash.com/photo-1600607687644-c7171b42498b',
-  'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d',
-  'https://images.unsplash.com/photo-1600607688969-a5bfcd646154',
-  'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0',
-  'https://images.unsplash.com/photo-1600210492493-0946911123ea',
-  'https://images.unsplash.com/photo-1600585154526-990dced4db0d',
-  'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3',
-  'https://images.unsplash.com/photo-1600563438938-a9a27216b4f5'
+  "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+  "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",
+  "https://images.unsplash.com/photo-1571896349842-33c89424de2d",
+  "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6",
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9",
+  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+  "https://images.unsplash.com/photo-1600607687644-c7171b42498b",
+  "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d",
+  "https://images.unsplash.com/photo-1600607688969-a5bfcd646154",
+  "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0",
+  "https://images.unsplash.com/photo-1600210492493-0946911123ea",
+  "https://images.unsplash.com/photo-1600585154526-990dced4db0d",
+  "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3",
+  "https://images.unsplash.com/photo-1600563438938-a9a27216b4f5",
 ];
 
 export function PhotoGallery() {
@@ -28,23 +28,19 @@ export function PhotoGallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
-    <section className="py-20 px-4 bg-muted/30">
+    <section className="py-20 px-4 bg-foreground">
       <div className="container mx-auto max-w-7xl">
         <div
           ref={ref}
           className={`transition-all duration-1000 ${
-            isVisible
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-10'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              {t('gallery_page.title')}
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              {t("gallery_page.title")}
             </h2>
-            <p className="text-lg text-muted-foreground">
-              {t('gallery_page.subtitle')}
-            </p>
+            <p className="text-lg text-black">{t("gallery_page.subtitle")}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
@@ -69,9 +65,9 @@ export function PhotoGallery() {
               size="lg"
               variant="outline"
               asChild
-              className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/30 hover:border-primary/50"
+              className="bg-linear-to-r from-primary to-primary/80"
             >
-              <a href="/gallery">{t('common.view_all')}</a>
+              <a href="/gallery">{t("common.view_all")}</a>
             </Button>
           </div>
         </div>
