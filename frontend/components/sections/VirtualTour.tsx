@@ -36,10 +36,7 @@ export function VirtualTour() {
                 <div className="p-6 bg-white/20 backdrop-blur-sm rounded-full mb-4 inline-block">
                   <Play className="h-12 w-12 text-white fill-white" />
                 </div>
-                <Button
-                  size="lg"
-                  className="bg-primary text-foreground"
-                >
+                <Button size="lg" className="text-black-important bg-primary">
                   {t("virtual_tour.start_tour")}
                 </Button>
               </div>

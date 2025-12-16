@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les Jardins Yasmina Website</title>
+
+    <!-- Prevent white flash / force theme BEFORE React -->
+    <script>
+      (function () {
+        const storedTheme = localStorage.getItem("theme");
+
+        // default theme = dark
+        const theme = storedTheme ? storedTheme : "dark";
+
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-CxNEjrpR.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-OnQBzdnY.css">
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,126 +1,321 @@
 import { useTranslation } from "react-i18next";
-import { Users, Maximize } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedLayout } from "@/components/layout/AnimatedLayout";
-
-const roomsData = [
-  {
-    id: "1",
-    name_key: "Chambre Atlas",
-    description_key:
-      "Spacious room with mountain views and traditional Berber decor",
-    price: 120,
-    capacity: 2,
-    size: 30,
-    image: "https://images.unsplash.com/photo-1590490360182-c33d57733427",
-    amenities: ["King Bed", "Mountain View", "Air Conditioning", "WiFi"],
-  },
-  {
-    id: "2",
-    name_key: "Suite Lac",
-    description_key:
-      "Luxury suite with panoramic lake views and private balcony",
-    price: 180,
-    capacity: 3,
-    size: 45,
-    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",
-    amenities: ["King Bed", "Lake View", "Balcony", "Mini Bar", "WiFi"],
-  },
-  {
-    id: "3",
-    name_key: "Chambre Familiale",
-    description_key: "Family room with two bedrooms and shared living area",
-    price: 200,
-    capacity: 4,
-    size: 55,
-    image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a",
-    amenities: ["2 Bedrooms", "Living Area", "Garden View", "WiFi"],
-  },
-];
+import { RoomCard } from "@/components/RoomCard";
+import { Room } from "@/types";
+import { Loader2, RefreshCw, BedDouble, Star } from "lucide-react";
+import { supabase } from "@/services/supabaseClient";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function Rooms() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [rooms, setRooms] = useState<Room[]>([]);
+  const [filteredRooms, setFilteredRooms] = useState<Room[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Filtres
+  const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [selectedCapacity, setSelectedCapacity] = useState<number | null>(null);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+  const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
+  const [showFilters, setShowFilters] = useState(true);
+
+  useEffect(() => {
+    fetchRooms();
+  }, []);
+
+  useEffect(() => {
+    applyFilters();
+  }, [rooms, selectedType, selectedCapacity, priceRange, selectedAmenities]);
+
+  const fetchRooms = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const { data, error } = await supabase
+        .from("rooms")
+        .select("*")
+        .order("order_position", { ascending: true });
+      if (error) throw error;
+      setRooms(data || []);
+    } catch (err: any) {
+      setError(err.message || "Erreur lors du chargement des chambres");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getName = (room: Room) =>
+    i18n.language === "fr" ? room.name_fr : room.name_en;
+  const getType = (room: Room) =>
+    i18n.language === "fr" ? room.type_fr : room.type_en;
+  const getStatus = (room: Room) =>
+    i18n.language === "fr" ? room.status_fr : room.status_en;
+
+  // Données pour filtres
+  const allTypes = Array.from(new Set(rooms.map(getType)));
+  const allCapacities = Array.from(new Set(rooms.map((r) => r.capacity))).sort(
+    (a, b) => a - b
+  );
+  const allAmenities = Array.from(
+    new Set(rooms.flatMap((r) => r.amenities_fr || []))
+  );
+
+  const toggleAmenity = (amenity: string) => {
+    setSelectedAmenities((prev) =>
+      prev.includes(amenity)
+        ? prev.filter((a) => a !== amenity)
+        : [...prev, amenity]
+    );
+  };
+
+  const applyFilters = () => {
+    let filtered = [...rooms];
+    if (selectedType)
+      filtered = filtered.filter((r) => getType(r) === selectedType);
+    if (selectedCapacity)
+      filtered = filtered.filter((r) => r.capacity >= selectedCapacity);
+    filtered = filtered.filter(
+      (r) =>
+        r.price_per_night >= priceRange[0] && r.price_per_night <= priceRange[1]
+    );
+    if (selectedAmenities.length > 0) {
+      filtered = filtered.filter((r) =>
+        selectedAmenities.every((a) => r.amenities_fr?.includes(a))
+      );
+    }
+    setFilteredRooms(filtered);
+  };
+
+  const clearFilters = () => {
+    setSelectedType(null);
+    setSelectedCapacity(null);
+    setPriceRange([0, 1000]);
+    setSelectedAmenities([]);
+  };
+
+  if (loading) {
+    return (
+      <AnimatedLayout pageType="rooms">
+        <div className="min-h-screen flex flex-col items-center justify-center gap-6">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+            className="relative"
+          >
+            <div className="w-16 h-16 rounded-full border-2 border-primary/30" />
+            <div
+              className="absolute inset-0 w-16 h-16 rounded-full border-t-2 border-primary"
+              style={{ animation: "spin 1s linear infinite" }}
+            />
+            <Loader2 className="absolute inset-0 m-auto h-6 w-6 text-primary" />
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-muted-foreground font-serif text-lg"
+          >
+            {t("common.loading") || "Chargement..."}
+          </motion.p>
+        </div>
+      </AnimatedLayout>
+    );
+  }
+
+  if (error) {
+    return (
+      <AnimatedLayout pageType="rooms">
+        <div className="min-h-screen flex flex-col items-center justify-center gap-6">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="text-center space-y-4"
+          >
+            <p className="text-destructive text-lg">{error}</p>
+            <Button
+              variant="outline"
+              className="gap-2 border-primary/50 hover:bg-primary/10"
+              onClick={fetchRooms}
+            >
+              <RefreshCw className="h-4 w-4" />
+              {t("common.retry") || "Réessayer"}
+            </Button>
+          </motion.div>
+        </div>
+      </AnimatedLayout>
+    );
+  }
 
   return (
     <AnimatedLayout pageType="rooms">
-      <div className="min-h-screen pt-32 pb-20 px-4">
+      <div className="min-h-screen py-30 px-4 md:px-6">
         <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              {t("rooms_page.title")}
-            </h1>
-            <p className="text-lg text-foreground/70">
-              {t("rooms_page.subtitle")}
-            </p>
-          </div>
+          {/* Hero Header */}
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6">
+              <span className="text-foreground">
+                {t("rooms_page.title")
+                  ? t("rooms_page.title").split(" ")[0]
+                  : "Nos"}{" "}
+              </span>
+              <span className="text-gradient-gold">
+                {t("rooms_page.title")
+                  ? t("rooms_page.title").split(" ").slice(1).join(" ")
+                  : "Chambres"}
+              </span>
+            </motion.h1>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {roomsData.map((room, index) => (
-              <Card
-                key={room.id}
-                className="overflow-hidden group hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
-              >
-                <div className="relative h-80 overflow-hidden">
-                  <img
-                    src={`${room.image}?w=800&h=600&fit=crop`}
-                    alt={room.name_key}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute top-4 right-4">
-                    <Badge className="bg-primary text-white px-4 py-2 text-lg">
-                      €{room.price} {t("common.per_night")}
-                    </Badge>
+            <motion.p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              {t("rooms_page.subtitle") ||
+                "Découvrez nos chambres confortables et élégantes"}
+            </motion.p>
+          </motion.div>
+
+          {/* Bouton toggle filtres */}
+          <Button
+            variant="outline"
+            onClick={() => setShowFilters(!showFilters)}
+            className="mb-6 border-white/40 text-white hover:border-yellow-500 hover:bg-transparent"
+          >
+            {showFilters ? "Masquer les filtres" : "Afficher les filtres"}
+          </Button>
+
+          {/* Filtres */}
+          {showFilters && (
+            <div className="mb-12">
+              <div className="glass-card rounded-2xl border border-primary/30 p-6">
+                {/* Type */}
+                <div className="mb-6">
+                  <h3 className="font-semibold text-lg mb-3">Type</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {allTypes.map((type) => (
+                      <button
+                        key={type}
+                        className={`px-4 py-2 rounded-full border transition ${
+                          selectedType === type
+                            ? "room-gold text-white border-yellow-500"
+                            : "bg-transparent text-white border-white/50 hover:border-yellow-500"
+                        }`}
+                        onClick={() =>
+                          setSelectedType(selectedType === type ? null : type)
+                        }
+                      >
+                        {type}
+                      </button>
+                    ))}
                   </div>
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-3">{room.name_key}</h3>
-                  <p className="text-foreground/70 mb-4">
-                    {room.description_key}
-                  </p>
-
-                  <div className="flex items-center gap-6 mb-4 text-sm">
-                    <div className="flex items-center gap-2">
-                      <Users className="h-4 w-4 text-primary" />
-                      <span>
-                        {room.capacity} {t("common.guests")}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Maximize className="h-4 w-4 text-primary" />
-                      <span>
-                        {room.size} {t("rooms_page.sqm")}
-                      </span>
-                    </div>
+                {/* Capacité */}
+                <div className="mb-6">
+                  <h3 className="font-semibold text-lg mb-3">Capacité</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {allCapacities.map((cap) => (
+                      <button
+                        key={cap}
+                        className={`px-4 py-2 rounded-full border transition ${
+                          selectedCapacity === cap
+                            ? "room-gold text-white border-yellow-500"
+                            : "bg-transparent text-white border-white/40 hover:border-yellow-500"
+                        }`}
+                        onClick={() =>
+                          setSelectedCapacity(
+                            selectedCapacity === cap ? null : cap
+                          )
+                        }
+                      >
+                        {cap} pers.
+                      </button>
+                    ))}
                   </div>
+                </div>
 
+                {/* Prix */}
+                <div className="mb-6">
+                  <h3 className="font-semibold text-lg mb-3">Prix</h3>
+                  <div className="flex items-center gap-4">
+                    <input
+                      type="number"
+                      value={priceRange[0]}
+                      onChange={(e) =>
+                        setPriceRange([Number(e.target.value), priceRange[1]])
+                      }
+                      className="px-4 py-2 border border-primary/30 rounded-lg bg-transparent text-center w-24"
+                    />
+                    <span className="text-muted-foreground">à</span>
+                    <input
+                      type="number"
+                      value={priceRange[1]}
+                      onChange={(e) =>
+                        setPriceRange([priceRange[0], Number(e.target.value)])
+                      }
+                      className="px-4 py-2 border border-primary/30 rounded-lg bg-transparent text-center w-24"
+                    />
+                    <span className="text-muted-foreground">€ / nuit</span>
+                  </div>
+                </div>
+
+                {/* Commodités */}
+                {allAmenities.length > 0 && (
                   <div className="mb-6">
-                    <p className="text-sm font-semibold mb-2">
-                      {t("rooms_page.amenities")}:
-                    </p>
+                    <h3 className="font-semibold text-lg mb-3">Commodités</h3>
                     <div className="flex flex-wrap gap-2">
-                      {room.amenities.map((amenity, i) => (
-                        <Badge
-                          key={i}
-                          variant="outline"
-                          className="border-primary/30"
+                      {allAmenities.map((amenity) => (
+                        <button
+                          key={amenity}
+                          className={`px-4 py-2 rounded-full border transition ${
+                            selectedAmenities.includes(amenity)
+                              ? "room-gold text-white border-yellow-500"
+                              : "bg-transparent text-white border-white/40 hover:border-yellow-500"
+                          }`}
+                          onClick={() => toggleAmenity(amenity)}
                         >
                           {amenity}
-                        </Badge>
+                        </button>
                       ))}
                     </div>
                   </div>
+                )}
 
-                  <Button
-                    className="w-full bg-linear-to-r from-primary to-primary/80"
-                    asChild
-                  >
-                    <a href="/reservation">{t("common.book_now")}</a>
-                  </Button>
-                </div>
-              </Card>
+                <Button
+                  variant="outline"
+                  onClick={clearFilters}
+                  className="border-primary/50 hover:bg-primary/10"
+                >
+                  Effacer les filtres
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* Résultats */}
+          <p className="text-muted-foreground mb-8">
+            <span className="text-primary font-semibold">
+              {filteredRooms.length}
+            </span>{" "}
+            hébergement(s) trouvé(s)
+          </p>
+
+          {/* Rooms grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            {filteredRooms.map((room, index) => (
+              <RoomCard
+                key={room.id}
+                room={room}
+                index={index}
+                getName={getName}
+                getType={getType}
+                getStatus={getStatus}
+                showButton
+              />
             ))}
           </div>
         </div>

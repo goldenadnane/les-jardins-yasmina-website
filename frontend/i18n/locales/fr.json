@@ -18,7 +18,9 @@
     "children": "Enfants",
     "guests": "Voyageurs",
     "per_night": "par nuit",
-    "from": "À partir de"
+    "from": "À partir de",
+    "continue": "Continue",
+    "back":"Retour"
   },
   "hero": {
     "slide1_title": "Bienvenue chez nous ! Maison d'hôtes Les jardins yasmina",

@@ -18,7 +18,9 @@
     "children": "Children",
     "guests": "Guests",
     "per_night": "per night",
-    "from": "From"
+    "from": "From",
+    "continue": "Continue",
+    "back": "Return"
   },
   "hero": {
     "slide1_title": "Welcome to Les Jardins Yasmina Guesthouse",

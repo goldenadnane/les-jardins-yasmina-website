@@ -4,7 +4,6 @@ import { ArrowUp } from "lucide-react";
 import { HeroCarousel } from "../components/sections/HeroCarousel";
 import { ReservationWidget } from "../components/sections/ReservationWidget";
 import { PropertyDescription } from "../components/sections/PropertyDescription";
-import { PhotoGallery } from "../components/sections/PhotoGallery";
 import { LakeDescription } from "../components/sections/LakeDescription";
 import { SitesToVisit } from "../components/sections/SitesToVisit";
 import { SportsLeisure } from "../components/sections/SportsLeisure";
@@ -15,6 +14,7 @@ import { useFoundationAnimation } from "@/hooks/useFoundationAnimation";
 import { usePandaAnimation } from "@/hooks/usePandasAnimation";
 import { useWindArtAnimation } from "@/hooks/useWinArtAnimation";
 import { AnimatedLayout } from "@/components/layout/AnimatedLayout";
+import PhotoGallery from "@/components/sections/PhotoGallery";
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -248,7 +248,8 @@ export default function Home() {
           >
             <Button
               size="lg"
-              className="bg-linear-to-r from-primary to-primary/80 shadow-2xl hover:shadow-3xl transition-all foundation-animate click-animate group relative overflow-hidden"
+              className="text-black-important
+bg-linear-to-r from-primary to-primary/80 shadow-2xl hover:shadow-3xl transition-all foundation-animate click-animate group relative overflow-hidden"
               asChild
             >
               <a href="/reservation">

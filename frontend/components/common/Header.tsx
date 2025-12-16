@@ -181,27 +181,9 @@ export function Header() {
             ref={desktopNavRef}
             className="hidden md:flex items-center space-x-4 foundation-animate"
           >
-            <div className="windart-animate">
-              <LanguageSwitcher />
-            </div>
-
-            {/* THEME TOGGLE avec animation Wind.Art */}
-            <button
-              ref={themeButtonRef}
-              onClick={handleThemeToggle}
-              aria-label="Toggle theme"
-              className="rounded-full p-2 transition-all duration-300 hover:bg-muted hover:scale-110 windart-animate click-animate contrast-bg-card"
-            >
-              {theme === "dark" ? (
-                <Sun className="h-5 w-5 text-foreground" />
-              ) : (
-                <Moon className="h-5 w-5 text-foreground" />
-              )}
-            </button>
-
             <Button
               asChild
-              className="bg-linear-to-r from-primary to-primary/80 hover:shadow-lg transition-all duration-300 click-animate foundation-animate group relative overflow-hidden"
+              className="text-black-important bg-linear-to-r from-primary to-primary/80 hover:shadow-lg transition-all duration-300 click-animate foundation-animate group relative overflow-hidden"
               onClick={() => handleNavClick("/reservation")}
             >
               <Link to="/reservation">

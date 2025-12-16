@@ -8,14 +8,34 @@ export interface HeroSlide {
 
 export interface Room {
   id: string;
-  name_key: string;
-  description_key: string;
-  price: number;
+
+  name_fr: string;
+  name_en: string;
+
+  description_fr: string;
+  description_en: string;
+
+  image_url: string[];
+
+  type_fr: string;
+  type_en: string;
+
   capacity: number;
-  image_url: string;
-  amenities_keys: string[];
-  size: number;
+  surface: number;
+
+  price_per_night: number;
+  devise: string;
+
+  status_fr: string;
+  status_en: string;
+
+  amenities_fr: string[];
+  amenities_en: string[];
+
+  order_position: number;
+  created_at: string;
 }
+
 
 export interface GalleryImage {
   id: string;
