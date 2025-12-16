@@ -20,7 +20,8 @@
     "per_night": "per night",
     "from": "From",
     "continue": "Continue",
-    "back": "Return"
+    "back": "Return",
+    "years": "years"
   },
   "hero": {
     "slide1_title": "Welcome to Les Jardins Yasmina Guesthouse",
@@ -114,7 +115,8 @@
     "check_out": "Check-out",
     "select_room": "Select a room",
     "total": "Total",
-    "nights": "nights"
+    "nights": "nights",
+    "child_age": "Child {{index}} age"
   },
   "reservation_page": {
     "title": "Reservation",
@@ -130,7 +132,9 @@
     "confirm_booking": "Confirm Booking",
     "booking_confirmed": "Booking Confirmed!",
     "confirmation_message": "Thank you for your reservation. You will receive a confirmation email shortly.",
-    "back_to_home": "Back to Home"
+    "back_to_home": "Back to Home",
+    "child_age": "Child {{index}} age",
+    "success_message": "Your reservation has been sent successfully!"
   },
   "rooms_page": {
     "title": "Our Rooms",
@@ -157,23 +161,28 @@
     "subtitle": "Make the most of your stay",
     "nearby_title": "Nearby Attractions"
   },
-  "contact_page": {
-    "title": "Contact Us",
-    "subtitle": "We're here to help",
-    "name": "Name",
-    "email": "Email",
-    "phone": "Phone",
-    "message": "Message",
-    "send": "Send",
-    "success_message": "Message sent successfully!",
-    "info_title": "Information",
-    "address": "Address",
-    "address_value": "Lake Bin-el-Ouidane, Atlas, Morocco"
-  },
+
   "footer": {
     "description": "Luxury guesthouse on the shores of Lake Bin-el-Ouidane in the Moroccan Atlas.",
     "quick_links": "Quick Links",
     "follow_us": "Follow Us",
     "rights": "All rights reserved"
+  },
+  "contact_page": {
+    "title": "Contact Us",
+    "subtitle": "We would love to hear from you.",
+    "name": "Name",
+    "name_placeholder": "Your full name",
+    "email": "Email",
+    "email_placeholder": "Your email address",
+    "phone": "Phone",
+    "phone_placeholder": "Your phone number",
+    "message": "Message",
+    "message_placeholder": "Your message here",
+    "send": "Send",
+    "success_message": "Your message has been sent successfully!",
+    "info_title": "Contact Information",
+    "address": "Address",
+    "address_value": "123 Example Street, Casablanca, Morocco"
   }
 }

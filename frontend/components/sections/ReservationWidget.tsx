@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import { Calendar, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -9,17 +8,55 @@ import { Label } from "@/components/ui/label";
 
 export function ReservationWidget() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
+  const [childAges, setChildAges] = useState<number[]>([]);
+
+  const handleChildAgeChange = (index: number, value: number) => {
+    const newAges = [...childAges];
+    newAges[index] = value;
+    setChildAges(newAges);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/reservation", {
-      state: { checkIn, checkOut, adults, children },
-    });
+
+    const dayCount =
+      (new Date(checkOut).getTime() - new Date(checkIn).getTime()) /
+      (1000 * 60 * 60 * 24);
+
+    const searchObj = {
+      checkin_date: checkIn,
+      checkout_date: checkOut,
+      day_count: dayCount,
+      room_count: 1,
+      total_adult: adults,
+      total_child: children,
+      rooms: [
+        {
+          adult_count: adults,
+          guest_count: adults + children,
+          child_count: children,
+          child_ages: childAges,
+        },
+      ],
+      guest_rooms: {
+        "0": {
+          adult_count: adults,
+          guest_count: adults + children,
+          child_count: children,
+          child_ages: childAges,
+        },
+      },
+    };
+
+    const url = `https://les-jardins-yasmina.hotelrunner.com/bv3/search?search=${encodeURIComponent(
+      JSON.stringify(searchObj)
+    )}`;
+
+    window.location.href = url; // redirige vers le site avec les champs remplis
   };
 
   return (
@@ -29,6 +66,7 @@ export function ReservationWidget() {
       </h3>
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Dates */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <Label htmlFor="check-in" className="flex items-center gap-2 mb-2">
@@ -61,6 +99,7 @@ export function ReservationWidget() {
           </div>
         </div>
 
+        {/* Adultes et enfants */}
         <div className="grid grid-cols-2 gap-4">
           <div>
             <Label htmlFor="adults" className="flex items-center gap-2 mb-2">
@@ -70,8 +109,8 @@ export function ReservationWidget() {
             <Input
               id="adults"
               type="number"
-              min="1"
-              max="10"
+              min={1}
+              max={10}
               value={adults}
               onChange={(e) => setAdults(Number(e.target.value))}
               required
@@ -85,13 +124,44 @@ export function ReservationWidget() {
             <Input
               id="children"
               type="number"
-              min="0"
-              max="10"
+              min={0}
+              max={10}
               value={children}
-              onChange={(e) => setChildren(Number(e.target.value))}
+              onChange={(e) => {
+                const newVal = Number(e.target.value);
+                setChildren(newVal);
+                setChildAges(Array(newVal).fill(1)); // âge par défaut = 1
+              }}
             />
           </div>
         </div>
+
+        {/* Sélection de l'âge des enfants */}
+        {children > 0 && (
+          <div className="space-y-4">
+            {Array.from({ length: children }, (_, i) => (
+              <div key={i}>
+                <Label className="mb-2 block">
+                  {t("reservation_widget.child_age", { index: i + 1 })}
+                </Label>
+                <select
+                  value={childAges[i]}
+                  onChange={(e) =>
+                    handleChildAgeChange(i, Number(e.target.value))
+                  }
+                  className="w-full room-gold rounded-md p-2 hover:border-primary focus:border-primary"
+                  required
+                >
+                  {Array.from({ length: 10 }, (_, age) => (
+                    <option key={age + 1} value={age + 1}>
+                      {age + 1} {t("common.years")}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ))}
+          </div>
+        )}
 
         <Button
           type="submit"

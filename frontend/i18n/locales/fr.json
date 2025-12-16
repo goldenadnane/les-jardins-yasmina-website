@@ -20,7 +20,8 @@
     "per_night": "par nuit",
     "from": "À partir de",
     "continue": "Continue",
-    "back":"Retour"
+    "back": "Retour",
+    "years": "ans"
   },
   "hero": {
     "slide1_title": "Bienvenue chez nous ! Maison d'hôtes Les jardins yasmina",
@@ -114,7 +115,8 @@
     "check_out": "Départ",
     "select_room": "Choisir une chambre",
     "total": "Total",
-    "nights": "nuits"
+    "nights": "nuits",
+    "child_age": "Âge de l'enfant {{index}}"
   },
   "reservation_page": {
     "title": "Réservation",
@@ -130,7 +132,9 @@
     "confirm_booking": "Confirmer la réservation",
     "booking_confirmed": "Réservation confirmée !",
     "confirmation_message": "Merci pour votre réservation. Vous recevrez un email de confirmation sous peu.",
-    "back_to_home": "Retour à l'accueil"
+    "back_to_home": "Retour à l'accueil",
+    "child_age": "Âge de l'enfant {{index}}",
+    "success_message": "Votre réservation a été envoyée avec succès !"
   },
   "rooms_page": {
     "title": "Nos Chambres",
@@ -157,23 +161,28 @@
     "subtitle": "Profitez de votre séjour au maximum",
     "nearby_title": "Attractions à proximité"
   },
-  "contact_page": {
-    "title": "Contactez-nous",
-    "subtitle": "Nous sommes à votre écoute",
-    "name": "Nom",
-    "email": "Email",
-    "phone": "Téléphone",
-    "message": "Message",
-    "send": "Envoyer",
-    "success_message": "Message envoyé avec succès !",
-    "info_title": "Informations",
-    "address": "Adresse",
-    "address_value": "Lac Bin-el-Ouidane, Atlas, Maroc"
-  },
+
   "footer": {
     "description": "Maison d'hôtes de luxe au bord du lac Bin-el-Ouidane dans l'Atlas marocain.",
     "quick_links": "Liens rapides",
     "follow_us": "Suivez-nous",
     "rights": "Tous droits réservés"
+  },
+  "contact_page": {
+    "title": "Contactez-nous",
+    "subtitle": "Nous serions ravis de recevoir votre message.",
+    "name": "Nom",
+    "name_placeholder": "Votre nom complet",
+    "email": "Email",
+    "email_placeholder": "Votre adresse email",
+    "phone": "Téléphone",
+    "phone_placeholder": "Votre numéro de téléphone",
+    "message": "Message",
+    "message_placeholder": "Votre message ici",
+    "send": "Envoyer",
+    "success_message": "Votre message a été envoyé avec succès !",
+    "info_title": "Informations de contact",
+    "address": "Adresse",
+    "address_value": "123 Rue Exemple, Casablanca, Maroc"
   }
 }

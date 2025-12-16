@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import { MapPin } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Link } from "react-router-dom"; // <-- Import de Link
 
 const attractionImages = [
   "https://images.unsplash.com/photo-1585159812596-fac104f2f069",
@@ -50,34 +51,35 @@ export function SitesToVisit() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t("attractions.title")}
             </h2>
-            <p className="text-lg text-muted-foreground">{t("attractions.subtitle")}</p>
+            <p className="text-lg text-muted-foreground">
+              {t("attractions.subtitle")}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {attractions.map((attraction, index) => (
-              <Card
-                key={index}
-                className="group overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={`${attraction.image}?w=600&h=400&fit=crop`}
-                    alt={attraction.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-                </div>
+              <Link key={index} to="/contact">
+                <Card className="group overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={`${attraction.image}?w=600&h=400&fit=crop`}
+                      alt={attraction.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                  </div>
 
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                    <MapPin className="h-5 w-5 text-primary" />
-                    {attraction.name}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {attraction.description}
-                  </p>
-                </div>
-              </Card>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                      <MapPin className="h-5 w-5 text-primary" />
+                      {attraction.name}
+                    </h3>
+                    <p className="text-muted-foreground">
+                      {attraction.description}
+                    </p>
+                  </div>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>

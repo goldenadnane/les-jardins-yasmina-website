@@ -2,10 +2,12 @@ import { useTranslation } from "react-i18next";
 import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export function VirtualTour() {
   const { t } = useTranslation();
   const { ref, isVisible } = useScrollAnimation();
+  const [showVideo, setShowVideo] = useState(true); // on affiche directement la vidéo
 
   return (
     <section className="py-20 px-4">
@@ -25,22 +27,40 @@ export function VirtualTour() {
             </p>
           </div>
 
-          <div className="relative rounded-2xl overflow-hidden group cursor-pointer aspect-video">
-            <img
-              src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=675&fit=crop"
-              alt="Virtual Tour"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center">
-              <div className="text-center">
-                <div className="p-6 bg-white/20 backdrop-blur-sm rounded-full mb-4 inline-block">
-                  <Play className="h-12 w-12 text-white fill-white" />
+          <div className="relative rounded-2xl overflow-hidden group aspect-video">
+            {showVideo ? (
+            <video
+  src="/videos/lesjardinsyasmine.mp4"
+  autoPlay
+  muted
+  loop
+  controls
+  playsInline
+  className="w-full h-full object-cover rounded-2xl"
+/>
+            ) : (
+              <img
+                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=675&fit=crop"
+                alt="Virtual Tour"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            )}
+
+            {!showVideo && (
+              <div
+                className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex items-center justify-center cursor-pointer"
+                onClick={() => setShowVideo(true)}
+              >
+                <div className="text-center">
+                  <div className="p-6 bg-white/20 backdrop-blur-sm rounded-full mb-4 inline-block">
+                    <Play className="h-12 w-12 text-white fill-white" />
+                  </div>
+                  <Button size="lg" className="text-black-important bg-primary">
+                    {t("virtual_tour.start_tour")}
+                  </Button>
                 </div>
-                <Button size="lg" className="text-black-important bg-primary">
-                  {t("virtual_tour.start_tour")}
-                </Button>
               </div>
-            </div>
+            )}
           </div>
 
           <p className="text-center mt-6 max-w-3xl mx-auto">
