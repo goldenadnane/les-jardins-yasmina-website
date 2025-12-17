@@ -7,7 +7,7 @@ import { useState } from "react";
 export function VirtualTour() {
   const { t } = useTranslation();
   const { ref, isVisible } = useScrollAnimation();
-  const [showVideo, setShowVideo] = useState(true); // on affiche directement la vidéo
+  const [showVideo, setShowVideo] = useState(true);
 
   return (
     <section className="py-20 px-4">
@@ -22,22 +22,22 @@ export function VirtualTour() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t("virtual_tour.title")}
             </h2>
-            <p className="text-lg text-muted-foreground mb-2">
+            <p className="text-lg text-black mb-2">
               {t("virtual_tour.subtitle")}
             </p>
           </div>
 
           <div className="relative rounded-2xl overflow-hidden group aspect-video">
             {showVideo ? (
-            <video
-  src="/videos/lesjardinsyasmine.mp4"
-  autoPlay
-  muted
-  loop
-  controls
-  playsInline
-  className="w-full h-full object-cover rounded-2xl"
-/>
+              <video
+                src="/videos/lesjardinsyasmine.mp4"
+                autoPlay
+                muted
+                loop
+                controls
+                playsInline
+                className="w-full h-full object-cover rounded-2xl"
+              />
             ) : (
               <img
                 src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=675&fit=crop"

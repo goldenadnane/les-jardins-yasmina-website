@@ -243,7 +243,7 @@ export default function Home() {
         {showFloatingReservation && (
           <div
             ref={floatingBtnRef}
-            className="fixed bottom-8 left-8 z-40 hidden lg:block animate-in slide-in-from-left duration-300 windart-animate"
+            className="fixed bottom-8 left-8 z-40 hidden lg:block animate-blink"
             onClick={handleFloatingButtonClick}
           >
             <Button

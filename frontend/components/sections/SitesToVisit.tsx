@@ -51,9 +51,7 @@ export function SitesToVisit() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t("attractions.title")}
             </h2>
-            <p className="text-lg text-muted-foreground">
-              {t("attractions.subtitle")}
-            </p>
+            <p className="text-lg text-black">{t("attractions.subtitle")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -70,13 +68,11 @@ export function SitesToVisit() {
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                      <MapPin className="h-5 w-5 text-primary" />
+                    <h3 className="text-xl room-gold text-white  font-bold mb-2 flex items-center gap-2">
+                      <MapPin className="h-5 w-5 text-white" />
                       {attraction.name}
                     </h3>
-                    <p className="text-muted-foreground">
-                      {attraction.description}
-                    </p>
+                    <p className="text-black">{attraction.description}</p>
                   </div>
                 </Card>
               </Link>

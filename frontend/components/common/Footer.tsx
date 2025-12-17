@@ -35,7 +35,7 @@ export function Footer() {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-sm text-foreground/70 hover:text-primary transition-colors"
+                    className="text-sm text-primary hover:text-primary transition-colors"
                   >
                     {link.label}
                   </Link>

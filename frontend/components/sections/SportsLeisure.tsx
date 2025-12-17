@@ -48,9 +48,7 @@ export function SportsLeisure() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t("activities.title")}
             </h2>
-            <p className="text-lg text-muted-foreground">
-              {t("activities.subtitle")}
-            </p>
+            <p className="text-lg text-white">{t("activities.subtitle")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -66,7 +64,7 @@ export function SportsLeisure() {
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-2">
+                      <h3 className="font-bold text-lg text-primary mb-2">
                         {activity.name}
                       </h3>
                       <p className="text-sm text-foreground/70">

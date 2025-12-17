@@ -29,7 +29,7 @@ export function LakeDescription() {
               {t("lake.title")}
             </h2>
 
-            <p className="text-lg leading-relaxed text-card-foreground">
+            <p className="text-lg leading-relaxed text-black">
               {t("lake.description")}
             </p>
           </div>

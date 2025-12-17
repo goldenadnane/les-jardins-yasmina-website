@@ -20,9 +20,7 @@ export function Testimonial() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t("testimonials.title")}
             </h2>
-            <p className="text-lg text-muted-foreground">
-              {t("testimonials.subtitle")}
-            </p>
+            <p className="text-lg text-white">{t("testimonials.subtitle")}</p>
           </div>
 
           <Card className="p-8 md:p-12 relative overflow-hidden">
@@ -36,12 +34,14 @@ export function Testimonial() {
                 ))}
               </div>
 
-              <p className="text-lg leading-relaxed text-center mb-6 italic">
+              <p className="text-lg leading-relaxed text-center mb-6 italic text-primary">
                 "{t("testimonials.main")}"
               </p>
 
               <div className="text-center">
-                <p className="font-semibold">Sophie & Marc</p>
+                <p className="font-semibold text-foreground/70">
+                  Sophie & Marc
+                </p>
                 <p className="text-sm text-foreground/70">France</p>
               </div>
             </div>

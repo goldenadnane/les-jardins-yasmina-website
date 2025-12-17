@@ -56,12 +56,12 @@ export function ReservationWidget() {
       JSON.stringify(searchObj)
     )}`;
 
-    window.location.href = url; // redirige vers le site avec les champs remplis
+    window.location.href = url;
   };
 
   return (
     <Card className="p-6 bg-card/95 backdrop-blur-sm border-border shadow-xl">
-      <h3 className="text-2xl font-bold mb-6 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+      <h3 className="text-2xl font-bold mb-6 text-[#B8860B]">
         {t("reservation_widget.title")}
       </h3>
 
@@ -69,9 +69,14 @@ export function ReservationWidget() {
         {/* Dates */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <Label htmlFor="check-in" className="flex items-center gap-2 mb-2">
+            <Label
+              htmlFor="check-in"
+              className="flex items-center gap-2 mb-2 text-gray-900 dark:text-black"
+            >
               <Calendar className="h-4 w-4" />
-              {t("reservation_widget.check_in")}
+              <span className="font-semibold">
+                {t("reservation_widget.check_in")}
+              </span>
             </Label>
             <Input
               id="check-in"
@@ -84,9 +89,14 @@ export function ReservationWidget() {
           </div>
 
           <div>
-            <Label htmlFor="check-out" className="flex items-center gap-2 mb-2">
+            <Label
+              htmlFor="check-out"
+              className="flex items-center gap-2 mb-2 text-gray-900 dark:text-black"
+            >
               <Calendar className="h-4 w-4" />
-              {t("reservation_widget.check_out")}
+              <span className="font-semibold">
+                {t("reservation_widget.check_out")}
+              </span>
             </Label>
             <Input
               id="check-out"
@@ -102,9 +112,12 @@ export function ReservationWidget() {
         {/* Adultes et enfants */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <Label htmlFor="adults" className="flex items-center gap-2 mb-2">
+            <Label
+              htmlFor="adults"
+              className="flex items-center gap-2 mb-2 text-gray-900 dark:text-black"
+            >
               <Users className="h-4 w-4" />
-              {t("common.adults")}
+              <span className="font-semibold">{t("common.adults")}</span>
             </Label>
             <Input
               id="adults"
@@ -118,7 +131,10 @@ export function ReservationWidget() {
           </div>
 
           <div>
-            <Label htmlFor="children" className="mb-2 block">
+            <Label
+              htmlFor="children"
+              className="mb-2 block text-gray-900 dark:text-black font-semibold"
+            >
               {t("common.children")}
             </Label>
             <Input
@@ -130,7 +146,7 @@ export function ReservationWidget() {
               onChange={(e) => {
                 const newVal = Number(e.target.value);
                 setChildren(newVal);
-                setChildAges(Array(newVal).fill(1)); // âge par défaut = 1
+                setChildAges(Array(newVal).fill(1));
               }}
             />
           </div>
@@ -141,7 +157,7 @@ export function ReservationWidget() {
           <div className="space-y-4">
             {Array.from({ length: children }, (_, i) => (
               <div key={i}>
-                <Label className="mb-2 block">
+                <Label className="mb-2 block text-gray-900 dark:text-black font-semibold">
                   {t("reservation_widget.child_age", { index: i + 1 })}
                 </Label>
                 <select
@@ -149,7 +165,7 @@ export function ReservationWidget() {
                   onChange={(e) =>
                     handleChildAgeChange(i, Number(e.target.value))
                   }
-                  className="w-full room-gold rounded-md p-2 hover:border-primary focus:border-primary"
+                  className="w-full rounded-md p-2 hover:border-primary focus:border-primary"
                   required
                 >
                   {Array.from({ length: 10 }, (_, age) => (

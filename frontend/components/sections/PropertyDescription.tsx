@@ -38,7 +38,7 @@ export function PropertyDescription() {
             {t("property.title")}
           </h2>
 
-          <p className="text-lg text-muted-foreground leading-relaxed mb-12 max-w-4xl mx-auto text-center">
+          <p className="text-lg text-black leading-relaxed mb-12 max-w-4xl mx-auto text-center">
             {t("property.description")}
           </p>
 
@@ -53,7 +53,7 @@ export function PropertyDescription() {
                   <div className="p-3 bg-primary/10 rounded-full mb-4">
                     <Icon className="h-6 w-6 text-primary" />
                   </div>
-                  <p className="text-center font-medium text-muted-foreground">
+                  <p className="text-center font-medium text-black">
                     {feature.text}
                   </p>
                 </div>
