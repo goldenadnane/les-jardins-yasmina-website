@@ -14,7 +14,7 @@ export function LakeDescription() {
             "url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80)",
         }}
       >
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-foreground backdrop-blur-sm" />
       </div>
 
       <div className="container mx-auto max-w-4xl relative z-10">
@@ -29,7 +29,7 @@ export function LakeDescription() {
               {t("lake.title")}
             </h2>
 
-            <p className="text-lg leading-relaxed text-black">
+            <p className="text-lg leading-relaxed text-white">
               {t("lake.description")}
             </p>
           </div>

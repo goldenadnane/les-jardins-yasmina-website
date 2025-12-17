@@ -52,7 +52,7 @@ export default function Contact() {
         <div className="container mx-auto max-w-6xl">
           {/* Titre */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/90 bg-clip-text text-transparent">
               {t("contact_page.title")}
             </h1>
             <p className="text-lg text-gray-600">
@@ -67,7 +67,7 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
-                      <Label htmlFor="name" className="mb-2">
+                      <Label htmlFor="name" className="mb-2 text-primary">
                         {t("contact_page.name")}
                       </Label>
                       <Input
@@ -81,7 +81,7 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="email" className="mb-2">
+                      <Label htmlFor="email" className="mb-2 text-primary">
                         {t("contact_page.email")}
                       </Label>
                       <Input
@@ -97,7 +97,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <Label htmlFor="phone" className="mb-2">
+                    <Label htmlFor="phone" className="mb-2 text-primary">
                       {t("contact_page.phone")}
                     </Label>
                     <Input
@@ -111,7 +111,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <Label htmlFor="message" className="mb-2">
+                    <Label htmlFor="message" className="mb-2 text-primary">
                       {t("contact_page.message")}
                     </Label>
                     <Textarea
@@ -135,12 +135,53 @@ export default function Contact() {
                   </Button>
                 </form>
               </Card>
+
+              {/* Map premium */}
+              <Card className="mt-8 overflow-hidden rounded-2xl shadow-2xl border border-primary/20">
+                {/* Header */}
+                <div className="px-6 py-4 bg-linear-to-r from-primary to-primary/80">
+                  <h3 className="text-lg font-semibold text-white tracking-wide">
+                    📍 Localisation
+                  </h3>
+                  <p className="text-sm text-white/80">Les Jardins Yasmina</p>
+                </div>
+
+                {/* Map */}
+                <div className="relative h-[380px]">
+                  {/* Overlay luxe */}
+                  <div className="absolute inset-0 bg-black/10 hover:bg-black/0 transition duration-500 pointer-events-none z-10" />
+
+                  <iframe
+                    title="Localisation Les Jardins Yasmina"
+                    src="https://www.google.com/maps?q=Les%20Jardins%20Yasmina&output=embed"
+                    className="w-full h-full border-0 grayscale hover:grayscale-0 transition duration-700"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+
+                {/* Footer */}
+                <div className="px-6 py-4 bg-white flex items-center justify-between">
+                  <span className="text-sm text-gray-600">
+                    Voir l’emplacement exact
+                  </span>
+
+                  <a
+                    href="https://www.google.com/maps?q=Les+Jardins+Yasmina"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-semibold text-primary hover:underline"
+                  >
+                    Ouvrir sur Google Maps →
+                  </a>
+                </div>
+              </Card>
             </div>
 
             {/* Informations de contact */}
             <div className="space-y-6">
               <Card className="p-6 shadow-lg rounded-xl border border-gray-200">
-                <h3 className="text-xl font-bold mb-6">
+                <h3 className="text-xl font-bold mb-6 text-primary">
                   {t("contact_page.info_title")}
                 </h3>
 
@@ -154,12 +195,12 @@ export default function Contact() {
                     {
                       icon: <Phone className="h-5 w-5 text-primary" />,
                       label: t("contact_page.phone"),
-                      value: "+212 XXX XXX XXX",
+                      value: "+ 212 662170223 / + 212 661089226",
                     },
                     {
                       icon: <Mail className="h-5 w-5 text-primary" />,
                       label: t("contact_page.email"),
-                      value: "contact@jardinsyasmina.com",
+                      value: "lesjardinsyasmina@gmail.com",
                     },
                   ].map((item, index) => (
                     <div key={index} className="flex items-start gap-4">
@@ -167,10 +208,10 @@ export default function Contact() {
                         {item.icon}
                       </div>
                       <div>
-                        <p className="font-semibold mb-1">{item.label}</p>
-                        <p className="text-sm text-muted-foreground">
-                          {item.value}
+                        <p className="font-semibold mb-1 text-primary">
+                          {item.label}
                         </p>
+                        <p className="text-sm text-white">{item.value}</p>
                       </div>
                     </div>
                   ))}
@@ -178,10 +219,10 @@ export default function Contact() {
               </Card>
 
               <Card className="p-6 bg-linear-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-xl shadow-sm">
-                <h3 className="text-xl font-bold mb-4">
+                <h3 className="text-xl font-bold mb-4 text-primary">
                   {t("services.reception")}
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-white">
                   {t("property.description").substring(0, 150)}...
                 </p>
               </Card>

@@ -26,7 +26,7 @@ export function PropertyDescription() {
   ];
 
   return (
-    <section id="property-section" className="py-20 px-4">
+    <section id="property-section" className="py-20 px-4 bg-foreground">
       <div className="container mx-auto max-w-6xl">
         <div
           ref={ref}
@@ -53,7 +53,7 @@ export function PropertyDescription() {
                   <div className="p-3 bg-primary/10 rounded-full mb-4">
                     <Icon className="h-6 w-6 text-primary" />
                   </div>
-                  <p className="text-center font-medium text-black">
+                  <p className="text-center font-medium text-white">
                     {feature.text}
                   </p>
                 </div>

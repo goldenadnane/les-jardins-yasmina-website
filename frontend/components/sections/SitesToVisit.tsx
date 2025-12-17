@@ -51,12 +51,12 @@ export function SitesToVisit() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t("attractions.title")}
             </h2>
-            <p className="text-lg text-black">{t("attractions.subtitle")}</p>
+            <p className="text-lg text-white">{t("attractions.subtitle")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {attractions.map((attraction, index) => (
-              <Link key={index} to="/contact">
+              <Link key={index} to="/contact" className="block">
                 <Card className="group overflow-hidden border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                   <div className="relative h-64 overflow-hidden">
                     <img
@@ -72,7 +72,7 @@ export function SitesToVisit() {
                       <MapPin className="h-5 w-5 text-white" />
                       {attraction.name}
                     </h3>
-                    <p className="text-black">{attraction.description}</p>
+                    <p className="text-white">{attraction.description}</p>
                   </div>
                 </Card>
               </Link>

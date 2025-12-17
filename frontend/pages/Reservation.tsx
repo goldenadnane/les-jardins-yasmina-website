@@ -64,25 +64,31 @@ export default function ReservationPage() {
       <div className="min-h-screen pt-32 pb-20 px-4 bg-linear-to-b from-muted/30 to-background">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary font-montserrat">
               {t("reservation_page.title")}
             </h1>
-            <p className="text-lg text-foreground/70">
+            <p className="text-lg text-black dark:text-black">
               {t("reservation_page.subtitle")}
             </p>
           </div>
 
-          <form onSubmit={handleSubmit}>
-            <Card className="p-6 md:p-8 max-w-2xl mx-auto space-y-6">
+          <Card className="p-6 bg-foreground backdrop-blur-sm border-black shadow-xl hover:shadow-2xl transition-shadow duration-300 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold mb-6 text-primary font-montserrat">
+              {t("reservation_widget.title")}
+            </h3>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
               {/* Dates */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label
                     htmlFor="check-in"
-                    className="flex items-center gap-2 mb-2"
+                    className="flex items-center gap-2 mb-2 text-black"
                   >
-                    <Calendar className="h-4 w-4" />
-                    {t("reservation_widget.check_in")}
+                    <Calendar className="h-4 w-4 text-primary" />
+                    <span className="font-semibold">
+                      {t("reservation_widget.check_in")}
+                    </span>
                   </Label>
                   <Input
                     id="check-in"
@@ -90,16 +96,19 @@ export default function ReservationPage() {
                     value={checkIn}
                     onChange={(e) => setCheckIn(e.target.value)}
                     required
+                    className="w-full bg-input text-black border-black hover:border-primary focus:border-primary transition-colors"
                   />
                 </div>
 
                 <div>
                   <Label
                     htmlFor="check-out"
-                    className="flex items-center gap-2 mb-2"
+                    className="flex items-center gap-2 mb-2 text-black"
                   >
-                    <Calendar className="h-4 w-4" />
-                    {t("reservation_widget.check_out")}
+                    <Calendar className="h-4 w-4 text-primary" />
+                    <span className="font-semibold">
+                      {t("reservation_widget.check_out")}
+                    </span>
                   </Label>
                   <Input
                     id="check-out"
@@ -107,19 +116,20 @@ export default function ReservationPage() {
                     value={checkOut}
                     onChange={(e) => setCheckOut(e.target.value)}
                     required
+                    className="w-full bg-input text-black border-black hover:border-primary focus:border-primary transition-colors"
                   />
                 </div>
               </div>
 
               {/* Adultes et enfants */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Label
                     htmlFor="adults"
-                    className="flex items-center gap-2 mb-2"
+                    className="flex items-center gap-2 mb-2 text-black"
                   >
-                    <Users className="h-4 w-4" />
-                    {t("common.adults")}
+                    <Users className="h-4 w-4 text-primary" />
+                    <span className="font-semibold">{t("common.adults")}</span>
                   </Label>
                   <Input
                     id="adults"
@@ -129,11 +139,15 @@ export default function ReservationPage() {
                     value={adults}
                     onChange={(e) => setAdults(Number(e.target.value))}
                     required
+                    className="bg-input text-black border-black hover:border-primary focus:border-primary transition-colors"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="children" className="mb-2 block">
+                  <Label
+                    htmlFor="children"
+                    className="mb-2 block text-black font-semibold"
+                  >
                     {t("common.children")}
                   </Label>
                   <Input
@@ -145,18 +159,19 @@ export default function ReservationPage() {
                     onChange={(e) => {
                       const newVal = Number(e.target.value);
                       setChildren(newVal);
-                      setChildAges(Array(newVal).fill(1)); // par défaut tous les enfants ont 1 an
+                      setChildAges(Array(newVal).fill(1));
                     }}
+                    className="bg-input text-black border-black hover:border-primary focus:border-primary transition-colors"
                   />
                 </div>
               </div>
 
-              {/* Sélection des âges pour chaque enfant */}
+              {/* Sélection de l'âge des enfants */}
               {children > 0 && (
                 <div className="space-y-4">
                   {Array.from({ length: children }, (_, i) => (
                     <div key={i}>
-                      <Label className="mb-2 block">
+                      <Label className="mb-2 block text-black font-semibold">
                         {t("reservation_widget.child_age", { index: i + 1 })}
                       </Label>
                       <select
@@ -164,7 +179,7 @@ export default function ReservationPage() {
                         onChange={(e) =>
                           handleChildAgeChange(i, Number(e.target.value))
                         }
-                        className="w-full room-gold rounded-md p-2 hover:border-primary focus:border-primary"
+                        className="w-full rounded-md p-2 bg-input text-black border border-black hover:border-primary focus:border-primary transition-colors"
                         required
                       >
                         {Array.from({ length: 10 }, (_, age) => (
@@ -180,13 +195,13 @@ export default function ReservationPage() {
 
               <Button
                 type="submit"
-                className="w-full bg-linear-to-r from-primary to-primary/80"
+                className="w-full bg-gradient-primary text-primary-foreground hover:opacity-90 transition-opacity font-semibold py-3"
                 size="lg"
               >
                 {t("common.book_now")}
               </Button>
-            </Card>
-          </form>
+            </form>
+          </Card>
         </div>
       </div>
     </AnimatedLayout>

@@ -14,16 +14,14 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="bg-foreground border-t border-border">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <h3 className="text-2xl font-bold bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               Les Jardins Yasmina
             </h3>
-            <p className="text-sm text-foreground/70">
-              {t("footer.description")}
-            </p>
+            <p className="text-sm text-black">{t("footer.description")}</p>
           </div>
 
           <div>
@@ -35,7 +33,7 @@ export function Footer() {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-sm text-primary hover:text-primary transition-colors"
+                    className="text-sm text-black! hover:text-primary! transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -51,19 +49,19 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2 text-sm">
                 <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                <span className="text-foreground/70">
+                <span className="text-black">
                   {t("contact_page.address_value")}
                 </span>
               </li>
               <li className="flex items-center space-x-2 text-sm">
                 <Phone className="h-5 w-5 text-primary shrink-0" />
-                <span className="text-foreground/70">+212 XXX XXX XXX</span>
+                <span className="text-black">
+                  + 212 662170223 / + 212 661089226
+                </span>
               </li>
               <li className="flex items-center space-x-2 text-sm">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
-                <span className="text-foreground/70">
-                  contact@jardinsyasmina.com
-                </span>
+                <span className="text-black">lesjardinsyasmina@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -74,13 +72,13 @@ export function Footer() {
             </h4>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/lesjardinsyasmina/"
                 className="p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
               >
                 <Facebook className="h-5 w-5 text-primary" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/lesjardinsyasmina/"
                 className="p-2 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
               >
                 <Instagram className="h-5 w-5 text-primary" />
@@ -89,7 +87,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-border text-center text-sm text-foreground/70">
+        <div className="mt-8 pt-8 border-t border-border text-center text-sm text-black">
           © {new Date().getFullYear()} Les Jardins Yasmina. {t("footer.rights")}
           .
         </div>

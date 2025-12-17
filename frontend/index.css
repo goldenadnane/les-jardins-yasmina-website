@@ -34,9 +34,11 @@
 
   /* Base colors avec plus de contraste */
   --background: oklch(1 0 0); /* Blanc pur */
-  --foreground: oklch(0.1 0.02 85); /* TRÈS FONCÉ pour contraste maximum */
+  --foreground: oklch(0.95 0.04 220); /* TRÈS FONCÉ pour contraste maximum */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(1 0 0); /* TRÈS FONCÉ */
+  --card-foreground: oklch(
+    0.1 0.02 85
+  ); /* CORRIGÉ : doit être foncé, pas blanc */
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.1 0.02 85); /* TRÈS FONCÉ */
 
@@ -637,48 +639,46 @@ a:hover:not(.text-primary) {
   }
 }
 
-@layer utilities {
-  /* Pour le texte sur images ou fonds sombres */
-  .text-overlay-light {
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-  }
+/* Pour le texte sur images ou fonds sombres */
+.text-overlay-light {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
 
-  .text-overlay-dark {
-    color: rgba(0, 0, 0, 0.9);
-    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
-  }
+.text-overlay-dark {
+  color: rgba(0, 0, 0, 0.9);
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+}
 
-  /* Classe automatique qui s'adapte au mode */
-  .text-overlay-contrast {
-    @apply text-white/90;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
-  }
+/* Classe automatique qui s'adapte au mode */
+.text-overlay-contrast {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
 
-  .dark .text-overlay-contrast {
-    @apply text-white/95;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
-  }
+.dark .text-overlay-contrast {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
 
-  /* Assurer un contraste minimum */
-  .ensure-contrast {
-    background-color: var(--card);
-    color: var(--card-foreground);
-    border: 1px solid var(--border);
-    padding: 0.5rem 1rem;
-    border-radius: 0.375rem;
-  }
+/* Assurer un contraste minimum */
+.ensure-contrast {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+}
 
-  /* Pour les éléments interactifs */
-  .interactive-contrast {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
-  }
+/* Pour les éléments interactifs */
+.interactive-contrast {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
 
-  .interactive-contrast:hover {
-    background-color: var(--primary);
-    opacity: 0.9;
-  }
+.interactive-contrast:hover {
+  background-color: var(--primary);
+  opacity: 0.9;
 }
 
 @layer components {
@@ -689,11 +689,15 @@ a:hover:not(.text-primary) {
 
     border: 1px solid color-mix(in oklch, var(--primary) 60%, black 10%);
 
-    @apply rounded-md px-2 py-1
-           font-medium
-           backdrop-blur-sm
-           shadow-sm
-           transition-all;
+    border-radius: 0.375rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
   }
 
   .room-gold:hover {
@@ -730,7 +734,7 @@ a:hover:not(.text-primary) {
   }
 
   /* BOUTON MENU HAMBURGER VISIBLE */
-  header button.md\\:hidden {
+  header button.md\:hidden {
     background-color: var(--primary) !important;
     color: var(--primary-foreground) !important;
     border: 2px solid var(--primary) !important;
@@ -738,14 +742,14 @@ a:hover:not(.text-primary) {
   }
 
   /* MENU DÉROULANT VISIBLE */
-  .md\\:hidden.py-4 {
+  .md\:hidden.py-4 {
     background-color: var(--background) !important;
     color: var(--foreground) !important;
     border-top: 2px solid var(--border) !important;
   }
 
   /* LIENS MOBILE VISIBLES */
-  .md\\:hidden a {
+  .md\:hidden a {
     color: var(--foreground) !important;
     background-color: var(--muted) !important;
     border: 1px solid var(--border) !important;
@@ -754,14 +758,14 @@ a:hover:not(.text-primary) {
   }
 
   /* LIEN ACTIF MOBILE */
-  .md\\:hidden a.bg-primary {
+  .md\:hidden a.bg-primary {
     background-color: var(--primary) !important;
     color: var(--primary-foreground) !important;
     font-weight: 700 !important;
   }
 
   /* BOUTON RÉSERVER MOBILE */
-  .md\\:hidden button.bg-primary {
+  .md\:hidden button.bg-primary {
     background-color: var(--primary) !important;
     color: var(--primary-foreground) !important;
     border: 2px solid var(--primary) !important;
@@ -790,11 +794,11 @@ a:hover:not(.text-primary) {
   background-color: rgba(10, 10, 10, 0.98) !important;
 }
 
-.dark .md\\:hidden.py-4 {
+.dark .md\:hidden.py-4 {
   background-color: #1a1a1a !important;
 }
 
-.dark .md\\:hidden a:not(.bg-primary) {
+.dark .md\:hidden a:not(.bg-primary) {
   background-color: #2a2a2a !important;
   border-color: #444 !important;
 }
@@ -810,4 +814,22 @@ a:hover:not(.text-primary) {
 }
 .animate-bounce-slow {
   animation: bounce-slow 2s infinite;
+}
+
+/* RÈGLES GLOBALES FINALES POUR LES POLICES */
+* {
+  font-family: var(--font-optima) !important;
+}
+
+body {
+  font-family: var(--font-optima) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-montserrat) !important;
 }

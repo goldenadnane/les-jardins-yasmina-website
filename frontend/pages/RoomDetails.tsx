@@ -73,7 +73,7 @@ export function RoomDetails() {
   }
 
   return (
-    <div className="min-h-screen pt-16 pb-16 px-4 max-w-7xl mx-auto">
+    <div className="min-h-screen pt-25 pb-16 px-4 max-w-7xl mx-auto">
       {/* Back Button */}
       <Button
         variant="ghost"
@@ -148,7 +148,7 @@ export function RoomDetails() {
 
         {/* Room Info */}
         <div className="space-y-6">
-          <p className="text-lg text-muted-foreground">{room.type_fr}</p>
+          <p className="text-lg text-primary">{room.type_fr}</p>
 
           {/* Price */}
           <div className="flex items-baseline gap-2 p-4 bg-linear-to-r room-gold rounded-xl text-primary-foreground font-bold text-2xl md:text-4xl">
@@ -161,7 +161,7 @@ export function RoomDetails() {
             <div className="flex items-center gap-3 p-4 bg-card rounded-xl border border-border">
               <Users className="h-6 w-6 text-primary" />
               <div>
-                <p className="text-sm text-muted-foreground">Capacité</p>
+                <p className="text-sm text-primary">Capacité</p>
                 <p className="font-bold text-foreground">
                   {room.capacity} personnes
                 </p>
@@ -170,7 +170,7 @@ export function RoomDetails() {
             <div className="flex items-center gap-3 p-4 bg-card rounded-xl border border-border">
               <Maximize className="h-6 w-6 text-primary" />
               <div>
-                <p className="text-sm text-muted-foreground">Surface</p>
+                <p className="text-sm text-primary">Surface</p>
                 <p className="font-bold text-foreground">{room.surface} m²</p>
               </div>
             </div>
@@ -178,14 +178,18 @@ export function RoomDetails() {
 
           {/* Description */}
           <div className="p-4 bg-muted/20 rounded-xl">
-            <h2 className="text-xl font-bold mb-2">Description</h2>
-            <p className="text-muted-foreground">{room.description_fr}</p>
+            <h2 className="text-xl font-bold mb-2 text-foreground">
+              Description
+            </h2>
+            <p className="text-primary">{room.description_fr}</p>
           </div>
 
           {/* Amenities */}
           {room.amenities_fr && room.amenities_fr.length > 0 && (
             <div className="p-4 bg-card rounded-xl border border-border">
-              <h2 className="text-xl font-bold mb-2">Équipements</h2>
+              <h2 className="text-xl font-bold mb-2 text-foreground">
+                Équipements
+              </h2>
               <div className="grid grid-cols-2 gap-2">
                 {room.amenities_fr.map((amenity, idx) => {
                   const Icon = getAmenityIcon(amenity);
@@ -212,10 +216,7 @@ export function RoomDetails() {
             size="lg"
             className="w-full py-4 text-lg bg-linear-to-r room-gold hover:opacity-90 transition-all"
           >
-            <Link
-              to={`/reservation?room=${room.id}`}
-              className="text-black-important"
-            >
+            <Link to={`/reservation?room=${room.id}`} className="text-white">
               Réserver maintenant
             </Link>
           </Button>

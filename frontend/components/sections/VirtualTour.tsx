@@ -22,7 +22,7 @@ export function VirtualTour() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t("virtual_tour.title")}
             </h2>
-            <p className="text-lg text-black mb-2">
+            <p className="text-lg text-white mb-2">
               {t("virtual_tour.subtitle")}
             </p>
           </div>

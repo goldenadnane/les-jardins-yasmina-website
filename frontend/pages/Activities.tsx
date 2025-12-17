@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Waves, Mountain, Ship, Fish, Bike, MapPin } from "lucide-react";
+import { Link, Link as RouterLink } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { AnimatedLayout } from "@/components/layout/AnimatedLayout";
 
@@ -92,14 +93,16 @@ export default function Activities() {
                     <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-4 left-4">
                       <div className="p-2 bg-white/20 backdrop-blur-sm rounded-lg">
-                        <Icon className="h-6 w-6 text-white" />
+                        <Icon className="h-6 w-6 text-primary" />
                       </div>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2">{activity.name}</h3>
-                    <p className="text-foreground/70">{activity.description}</p>
+                    <h3 className="text-xl font-bold mb-2 text-primary">
+                      {activity.name}
+                    </h3>
+                    <p className="text-foreground">{activity.description}</p>
                   </div>
                 </Card>
               );
@@ -113,29 +116,31 @@ export default function Activities() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {attractions.map((attraction, index) => (
-                <Card
-                  key={index}
-                  className="overflow-hidden group hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
-                >
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={`${attraction.image}?w=800&h=500&fit=crop`}
-                      alt={attraction.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-                  </div>
+                <Link key={index} to="/contact" className="block">
+                  <Card
+                    key={index}
+                    className="overflow-hidden group hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                  >
+                    <div className="relative h-64 overflow-hidden">
+                      <img
+                        src={`${attraction.image}?w=800&h=500&fit=crop`}
+                        alt={attraction.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                    </div>
 
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                      <MapPin className="h-5 w-5 text-primary" />
-                      {attraction.name}
-                    </h3>
-                    <p className="text-foreground/70">
-                      {attraction.description}
-                    </p>
-                  </div>
-                </Card>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold mb-2 flex items-center gap-2 text-primary">
+                        <MapPin className="h-5 w-5 text-primary" />
+                        {attraction.name}
+                      </h3>
+                      <p className="text-foreground/70">
+                        {attraction.description}
+                      </p>
+                    </div>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>

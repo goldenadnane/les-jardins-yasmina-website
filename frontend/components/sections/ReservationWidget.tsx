@@ -60,8 +60,8 @@ export function ReservationWidget() {
   };
 
   return (
-    <Card className="p-6 bg-card/95 backdrop-blur-sm border-border shadow-xl">
-      <h3 className="text-2xl font-bold mb-6 text-[#B8860B]">
+    <Card className="p-6 bg-foreground backdrop-blur-sm border-black shadow-xl hover:shadow-2xl transition-shadow duration-300">
+      <h3 className="text-2xl font-bold mb-6 text-primary font-montserrat">
         {t("reservation_widget.title")}
       </h3>
 
@@ -71,9 +71,9 @@ export function ReservationWidget() {
           <div>
             <Label
               htmlFor="check-in"
-              className="flex items-center gap-2 mb-2 text-gray-900 dark:text-black"
+              className="flex items-center gap-2 mb-2 text-black"
             >
-              <Calendar className="h-4 w-4" />
+              <Calendar className="h-4 w-4 text-primary" />
               <span className="font-semibold">
                 {t("reservation_widget.check_in")}
               </span>
@@ -84,16 +84,16 @@ export function ReservationWidget() {
               value={checkIn}
               onChange={(e) => setCheckIn(e.target.value)}
               required
-              className="w-full"
+              className="w-full bg-input text-black border-black hover:border-primary focus:border-primary transition-colors"
             />
           </div>
 
           <div>
             <Label
               htmlFor="check-out"
-              className="flex items-center gap-2 mb-2 text-gray-900 dark:text-black"
+              className="flex items-center gap-2 mb-2 text-black"
             >
-              <Calendar className="h-4 w-4" />
+              <Calendar className="h-4 w-4 text-primary" />
               <span className="font-semibold">
                 {t("reservation_widget.check_out")}
               </span>
@@ -104,7 +104,7 @@ export function ReservationWidget() {
               value={checkOut}
               onChange={(e) => setCheckOut(e.target.value)}
               required
-              className="w-full"
+              className="w-full bg-input text-black border-black hover:border-primary focus:border-primary transition-colors"
             />
           </div>
         </div>
@@ -114,9 +114,9 @@ export function ReservationWidget() {
           <div>
             <Label
               htmlFor="adults"
-              className="flex items-center gap-2 mb-2 text-gray-900 dark:text-black"
+              className="flex items-center gap-2 mb-2 text-black"
             >
-              <Users className="h-4 w-4" />
+              <Users className="h-4 w-4 text-primary" />
               <span className="font-semibold">{t("common.adults")}</span>
             </Label>
             <Input
@@ -127,13 +127,14 @@ export function ReservationWidget() {
               value={adults}
               onChange={(e) => setAdults(Number(e.target.value))}
               required
+              className="bg-input text-black border-black hover:border-primary focus:border-primary transition-colors"
             />
           </div>
 
           <div>
             <Label
               htmlFor="children"
-              className="mb-2 block text-gray-900 dark:text-black font-semibold"
+              className="mb-2 block text-black font-semibold"
             >
               {t("common.children")}
             </Label>
@@ -148,6 +149,7 @@ export function ReservationWidget() {
                 setChildren(newVal);
                 setChildAges(Array(newVal).fill(1));
               }}
+              className="bg-input text-black border-black hover:border-primary focus:border-primary transition-colors"
             />
           </div>
         </div>
@@ -157,7 +159,7 @@ export function ReservationWidget() {
           <div className="space-y-4">
             {Array.from({ length: children }, (_, i) => (
               <div key={i}>
-                <Label className="mb-2 block text-gray-900 dark:text-black font-semibold">
+                <Label className="mb-2 block text-black font-semibold">
                   {t("reservation_widget.child_age", { index: i + 1 })}
                 </Label>
                 <select
@@ -165,7 +167,7 @@ export function ReservationWidget() {
                   onChange={(e) =>
                     handleChildAgeChange(i, Number(e.target.value))
                   }
-                  className="w-full rounded-md p-2 hover:border-primary focus:border-primary"
+                  className="w-full rounded-md p-2 bg-input text-black border border-black hover:border-primary focus:border-primary transition-colors"
                   required
                 >
                   {Array.from({ length: 10 }, (_, age) => (
@@ -181,7 +183,7 @@ export function ReservationWidget() {
 
         <Button
           type="submit"
-          className="w-full bg-linear-to-r from-primary to-primary/80 hover:opacity-90 transition-opacity"
+          className="w-full bg-gradient-primary text-primary-foreground hover:opacity-90 transition-opacity font-semibold py-3"
           size="lg"
         >
           {t("common.book_now")}

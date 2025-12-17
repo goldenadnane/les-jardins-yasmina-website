@@ -166,14 +166,14 @@ export default function Rooms() {
                   ? t("rooms_page.title").split(" ")[0]
                   : "Nos"}{" "}
               </span>
-              <span className="text-gradient-gold">
+              <span className="text-gradient-gold text-[#B8860B]">
                 {t("rooms_page.title")
                   ? t("rooms_page.title").split(" ").slice(1).join(" ")
                   : "Chambres"}
               </span>
             </motion.h1>
 
-            <motion.p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            <motion.p className="text-lg md:text-xl text-black max-w-2xl mx-auto">
               {t("rooms_page.subtitle") ||
                 "Découvrez nos chambres confortables et élégantes"}
             </motion.p>
@@ -191,10 +191,12 @@ export default function Rooms() {
           {/* Filtres */}
           {showFilters && (
             <div className="mb-12">
-              <div className="glass-card rounded-2xl border border-primary/30 p-6">
+              <div className="glass-card bg-foreground rounded-2xl border border-primary/30 p-6">
                 {/* Type */}
                 <div className="mb-6">
-                  <h3 className="font-semibold text-lg mb-3">Type</h3>
+                  <h3 className="font-semibold text-lg mb-3 text-primary">
+                    Type
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {allTypes.map((type) => (
                       <button
@@ -202,7 +204,7 @@ export default function Rooms() {
                         className={`px-4 py-2 rounded-full border transition ${
                           selectedType === type
                             ? "room-gold text-white border-yellow-500"
-                            : "bg-transparent text-white border-white/50 hover:border-yellow-500"
+                            : "bg-transparent text-black border-black hover:border-yellow-500"
                         }`}
                         onClick={() =>
                           setSelectedType(selectedType === type ? null : type)
@@ -216,7 +218,9 @@ export default function Rooms() {
 
                 {/* Capacité */}
                 <div className="mb-6">
-                  <h3 className="font-semibold text-lg mb-3">Capacité</h3>
+                  <h3 className="font-semibold text-lg text-primary mb-3">
+                    Capacité
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {allCapacities.map((cap) => (
                       <button
@@ -224,7 +228,7 @@ export default function Rooms() {
                         className={`px-4 py-2 rounded-full border transition ${
                           selectedCapacity === cap
                             ? "room-gold text-white border-yellow-500"
-                            : "bg-transparent text-white border-white/40 hover:border-yellow-500"
+                            : "bg-transparent text-black border-black hover:border-yellow-500"
                         }`}
                         onClick={() =>
                           setSelectedCapacity(
@@ -240,7 +244,9 @@ export default function Rooms() {
 
                 {/* Prix */}
                 <div className="mb-6">
-                  <h3 className="font-semibold text-lg mb-3">Prix</h3>
+                  <h3 className="font-semibold text-lg text-primary mb-3">
+                    Prix
+                  </h3>
                   <div className="flex items-center gap-4">
                     <input
                       type="number"
@@ -248,25 +254,27 @@ export default function Rooms() {
                       onChange={(e) =>
                         setPriceRange([Number(e.target.value), priceRange[1]])
                       }
-                      className="px-4 py-2 border border-primary/30 rounded-lg bg-transparent text-center w-24"
+                      className="px-4 py-2 border border-black rounded-lg bg-transparent text-center w-24 text-black"
                     />
-                    <span className="text-muted-foreground">à</span>
+                    <span className="text-black">à</span>
                     <input
                       type="number"
                       value={priceRange[1]}
                       onChange={(e) =>
                         setPriceRange([priceRange[0], Number(e.target.value)])
                       }
-                      className="px-4 py-2 border border-primary/30 rounded-lg bg-transparent text-center w-24"
+                      className="px-4 py-2 border border-black rounded-lg bg-transparent text-center w-24 text-black"
                     />
-                    <span className="text-muted-foreground">€ / nuit</span>
+                    <span className="text-black">€ / nuit</span>
                   </div>
                 </div>
 
                 {/* Commodités */}
                 {allAmenities.length > 0 && (
                   <div className="mb-6">
-                    <h3 className="font-semibold text-lg mb-3">Commodités</h3>
+                    <h3 className="font-semibold text-lg text-primary mb-3">
+                      Commodités
+                    </h3>
                     <div className="flex flex-wrap gap-2">
                       {allAmenities.map((amenity) => (
                         <button
@@ -274,7 +282,7 @@ export default function Rooms() {
                           className={`px-4 py-2 rounded-full border transition ${
                             selectedAmenities.includes(amenity)
                               ? "room-gold text-white border-yellow-500"
-                              : "bg-transparent text-white border-white/40 hover:border-yellow-500"
+                              : "bg-transparent text-black border-black hover:border-yellow-500"
                           }`}
                           onClick={() => toggleAmenity(amenity)}
                         >
@@ -297,7 +305,7 @@ export default function Rooms() {
           )}
 
           {/* Résultats */}
-          <p className="text-muted-foreground mb-8">
+          <p className="text-primary mb-8">
             <span className="text-primary font-semibold">
               {filteredRooms.length}
             </span>{" "}

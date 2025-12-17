@@ -5,7 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Les Jardins Yasmina Website</title>
 
-    <!-- Prevent white flash / force theme BEFORE React -->
+    <!-- Google Fonts pour Cormorant Garamond et Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Remplacez le lien Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --font-elegant: "Cinzel", serif; /* Très élégant pour titres */
+        --font-body: "Cormorant Garamond", serif; /* Corps de texte */
+      }
+
+      * {
+        font-family: var(--font-body) !important;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-elegant) !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.05em !important;
+      }
+    </style>
+
     <script>
       (function () {
         const storedTheme = localStorage.getItem("theme");
