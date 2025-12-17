@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export function Header() {
   const { t } = useTranslation();
@@ -39,14 +40,28 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border shadow-md">
+    <header className="fixed top-0 left-0 right-0 z-50 section-light backdrop-blur-lg border-b border-border shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* LOGO - COULEUR FIXE ET VISIBLE */}
-          <Link to="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-[#B8860B]">
-              Les Jardins Yasmina
-            </span>
+          <Link to="/" className="flex items-center">
+            <motion.img
+              src="/images/jardins_yasmina_logo.png"
+              alt="Les Jardins Yasmina"
+              className="h-20 w-auto object-contain"
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{
+                opacity: 1,
+                y: [0, -2, 0],
+                scale: 1,
+              }}
+              transition={{
+                duration: 3,
+                ease: "easeInOut",
+                repeat: Infinity,
+              }}
+              whileHover={{ scale: 1.05 }}
+            />
           </Link>
 
           {/* NAV DESKTOP */}

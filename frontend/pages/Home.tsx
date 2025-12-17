@@ -158,6 +158,7 @@ export default function Home() {
         </div>
 
         {/* Widget de réservation avec animation */}
+        {/* 
         <div className="container mx-auto px-4 -mt-20 relative z-10">
           <div className="max-w-2xl mx-auto">
             <div
@@ -169,6 +170,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        */}
 
         {/* Sections avec animations séquentielles */}
         <div
