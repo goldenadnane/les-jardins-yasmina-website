@@ -18,12 +18,7 @@ export function LakeDescription() {
       </div>
 
       <div className="container mx-auto max-w-4xl relative z-10">
-        <div
-          ref={ref}
-          className={`transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
+        <div ref={ref}>
           <div className="bg-card/90 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-border shadow-2xl">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t("lake.title")}

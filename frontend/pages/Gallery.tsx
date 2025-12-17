@@ -78,7 +78,7 @@ export default function Gallery() {
 
   // ---------- RENDER ----------
   return (
-    <AnimatedLayout pageType="gallery">
+    <AnimatedLayout pageType="contact">
       <div className="min-h-screen pt-32 pb-20 px-4">
         <div className="container mx-auto max-w-7xl">
           {/* HEADER */}

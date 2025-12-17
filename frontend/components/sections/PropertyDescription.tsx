@@ -28,12 +28,7 @@ export function PropertyDescription() {
   return (
     <section id="property-section" className="py-20 px-4 bg-foreground">
       <div className="container mx-auto max-w-6xl">
-        <div
-          ref={ref}
-          className={`transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
+        <div ref={ref}>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             {t("property.title")}
           </h2>

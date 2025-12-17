@@ -1,3 +1,4 @@
+// router.tsx
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "../components/common/Layout";
 import Home from "../pages/Home";
@@ -7,10 +8,16 @@ import Gallery from "../pages/Gallery";
 import Activities from "../pages/Activities";
 import Contact from "../pages/Contact";
 import { RoomDetails } from "../pages/RoomDetails";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export const router = createBrowserRouter([
   {
-    element: <Layout />,
+    element: (
+      <>
+        <ScrollToTop />
+        <Layout />
+      </>
+    ), // Modifiez ici
     children: [
       { path: "/", element: <Home /> },
       { path: "/reservation", element: <Reservation /> },

@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowUp } from "lucide-react";
 import { HeroCarousel } from "../components/sections/HeroCarousel";
-import { ReservationWidget } from "../components/sections/ReservationWidget";
 import { PropertyDescription } from "../components/sections/PropertyDescription";
 import { LakeDescription } from "../components/sections/LakeDescription";
 import { SitesToVisit } from "../components/sections/SitesToVisit";
@@ -10,7 +9,6 @@ import { SportsLeisure } from "../components/sections/SportsLeisure";
 import { Testimonial } from "../components/sections/Testimonial";
 import { VirtualTour } from "../components/sections/VirtualTour";
 import { ServicesList } from "../components/sections/ServicesList";
-import { useFoundationAnimation } from "@/hooks/useFoundationAnimation";
 import { usePandaAnimation } from "@/hooks/usePandasAnimation";
 import { useWindArtAnimation } from "@/hooks/useWinArtAnimation";
 import { AnimatedLayout } from "@/components/layout/AnimatedLayout";
@@ -34,24 +32,6 @@ export default function Home() {
   const tourRef = useRef<HTMLDivElement>(null);
   const scrollTopRef = useRef<HTMLButtonElement>(null);
   const floatingBtnRef = useRef<HTMLDivElement>(null);
-
-  // Appliquer animations Panda (entrée principale)
-  usePandaAnimation(heroRef);
-  usePandaAnimation(propertyRef);
-  usePandaAnimation(galleryRef);
-  usePandaAnimation(sitesRef);
-  usePandaAnimation(tourRef);
-
-  // Appliquer animations Wind.Art (éléments interactifs)
-  useWindArtAnimation(reservationWidgetRef);
-  useWindArtAnimation(sportsRef);
-  useWindArtAnimation(scrollTopRef);
-  useWindArtAnimation(floatingBtnRef);
-
-  // Appliquer animations Foundation (sections de contenu)
-  useFoundationAnimation(lakeRef);
-  useFoundationAnimation(servicesRef);
-  useFoundationAnimation(testimonialRef);
 
   useEffect(() => {
     // Animation de chargement initiale
@@ -86,29 +66,6 @@ export default function Home() {
         testimonialRef,
         tourRef,
       ];
-
-      sections.forEach((ref, index) => {
-        if (ref.current) {
-          const rect = ref.current.getBoundingClientRect();
-          const isVisible = rect.top < window.innerHeight * 0.85;
-
-          if (isVisible && !ref.current.classList.contains("animated")) {
-            ref.current.classList.add("animated");
-
-            // Appliquer différentes animations selon la section
-            const delay = index * 150;
-            setTimeout(() => {
-              if (index % 3 === 0) {
-                ref.current?.classList.add("panda-animate");
-              } else if (index % 3 === 1) {
-                ref.current?.classList.add("foundation-animate");
-              } else {
-                ref.current?.classList.add("windart-animate");
-              }
-            }, delay);
-          }
-        }
-      });
     };
 
     window.addEventListener("scroll", handleScroll);

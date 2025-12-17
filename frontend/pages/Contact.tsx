@@ -60,11 +60,15 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Formulaire */}
-            <div className="lg:col-span-2">
-              <Card className="p-6 md:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl">
-                <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Grid principale */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            {/* Colonne gauche : Formulaire */}
+            <div className="lg:col-span-2 flex flex-col h-full">
+              <Card className="p-6 md:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl flex flex-col h-full">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-5 flex-1 flex flex-col"
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                       <Label htmlFor="name" className="mb-2 text-primary">
@@ -110,7 +114,7 @@ export default function Contact() {
                     />
                   </div>
 
-                  <div>
+                  <div className="flex-1 flex flex-col">
                     <Label htmlFor="message" className="mb-2 text-primary">
                       {t("contact_page.message")}
                     </Label>
@@ -121,67 +125,26 @@ export default function Contact() {
                       rows={6}
                       placeholder={t("contact_page.message_placeholder")}
                       required
-                      className="hover:border-primary focus:border-primary resize-none"
+                      className="hover:border-primary focus:border-primary resize-none flex-1"
                     />
                   </div>
 
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-linear-to-r from-primary to-primary/80 text-white hover:scale-105 transition-transform duration-300 py-3"
+                    className="mt-auto w-full bg-linear-to-r from-primary to-primary/80 text-white hover:scale-105 transition-transform duration-300 py-3"
                     size="lg"
                   >
                     {loading ? t("common.loading") : t("contact_page.send")}
                   </Button>
                 </form>
               </Card>
-
-              {/* Map premium */}
-              <Card className="mt-8 overflow-hidden rounded-2xl shadow-2xl border border-primary/20">
-                {/* Header */}
-                <div className="px-6 py-4 bg-linear-to-r from-primary to-primary/80">
-                  <h3 className="text-lg font-semibold text-white tracking-wide">
-                    📍 Localisation
-                  </h3>
-                  <p className="text-sm text-white/80">Les Jardins Yasmina</p>
-                </div>
-
-                {/* Map */}
-                <div className="relative h-[380px]">
-                  {/* Overlay luxe */}
-                  <div className="absolute inset-0 bg-black/10 hover:bg-black/0 transition duration-500 pointer-events-none z-10" />
-
-                  <iframe
-                    title="Localisation Les Jardins Yasmina"
-                    src="https://www.google.com/maps?q=Les%20Jardins%20Yasmina&output=embed"
-                    className="w-full h-full border-0 grayscale hover:grayscale-0 transition duration-700"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
-
-                {/* Footer */}
-                <div className="px-6 py-4 bg-white flex items-center justify-between">
-                  <span className="text-sm text-gray-600">
-                    Voir l’emplacement exact
-                  </span>
-
-                  <a
-                    href="https://www.google.com/maps?q=Les+Jardins+Yasmina"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-semibold text-primary hover:underline"
-                  >
-                    Ouvrir sur Google Maps →
-                  </a>
-                </div>
-              </Card>
             </div>
 
-            {/* Informations de contact */}
-            <div className="space-y-6">
+            {/* Colonne droite : Infos + Réception */}
+            <div className="space-y-6 flex flex-col h-full">
               <Card className="p-6 shadow-lg rounded-xl border border-gray-200">
-                <h3 className="text-xl font-bold mb-6 text-primary">
+                <h3 className="text-xl font-bold mb-2 text-primary">
                   {t("contact_page.info_title")}
                 </h3>
 
@@ -218,7 +181,7 @@ export default function Contact() {
                 </div>
               </Card>
 
-              <Card className="p-6 bg-linear-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-xl shadow-sm">
+              <Card className="p-6 bg-linear-to-br from-primary/5 to-primary/10 border border-primary/20 rounded-xl shadow-sm flex-1">
                 <h3 className="text-xl font-bold mb-4 text-primary">
                   {t("services.reception")}
                 </h3>
@@ -228,6 +191,42 @@ export default function Contact() {
               </Card>
             </div>
           </div>
+
+          {/* Map en bas */}
+          <Card className="mt-12 overflow-hidden rounded-2xl shadow-2xl border border-primary/20">
+            <div className="px-6 py-4 bg-linear-to-r from-primary to-primary/80">
+              <h3 className="text-lg font-semibold text-white tracking-wide">
+                📍 Localisation
+              </h3>
+              <p className="text-sm text-white/80">Les Jardins Yasmina</p>
+            </div>
+
+            <div className="relative h-96">
+              <div className="absolute inset-0 bg-black/10 hover:bg-black/0 transition duration-500 pointer-events-none z-10" />
+
+              <iframe
+                title="Localisation Les Jardins Yasmina"
+                src="https://www.google.com/maps?q=Les%20Jardins%20Yasmina&output=embed"
+                className="w-full h-full border-0 grayscale hover:grayscale-0 transition duration-700"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+
+            <div className="px-6 py-4 bg-white flex items-center justify-between">
+              <span className="text-sm text-gray-600">
+                Voir l’emplacement exact
+              </span>
+              <a
+                href="https://www.google.com/maps?q=Les+Jardins+Yasmina"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-primary hover:underline"
+              >
+                Ouvrir sur Google Maps →
+              </a>
+            </div>
+          </Card>
         </div>
       </div>
     </AnimatedLayout>

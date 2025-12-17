@@ -64,14 +64,14 @@ export default function Activities() {
   ];
 
   return (
-    <AnimatedLayout pageType="activities">
+    <AnimatedLayout pageType="contact">
       <div className="min-h-screen pt-32 pb-20 px-4 bg-foreground">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               {t("activities_page.title")}
             </h1>
-            <p className="text-lg text-foreground/70">
+            <p className="text-lg text-black">
               {t("activities_page.subtitle")}
             </p>
           </div>

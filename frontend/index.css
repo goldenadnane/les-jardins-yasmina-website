@@ -15,8 +15,8 @@
 /* Variables améliorées pour un meilleur contraste */
 :root {
   /* Primary - doré avec meilleur contraste */
-  --primary: oklch(0.7 0.2 85); /* Plus foncé pour light mode */
-  --primary-foreground: oklch(0.98 0.01 85);
+  --primary: oklch(0.93 0.07 100); /* plus doux, crème */
+  --primary-foreground: oklch(0.12 0.03 85); /* texte lisible */
 
   /* Secondary */
   --secondary: oklch(0.95 0.04 220);
@@ -71,8 +71,8 @@
 
 .dark {
   /* Primary - plus clair en dark mode */
-  --primary: oklch(0.85 0.16 85);
-  --primary-foreground: oklch(0.1 0.03 85);
+  --primary: oklch(0.8 0.09 90); /* légèrement plus chaud */
+  --primary-foreground: oklch(0.95 0.02 85); /* texte ressortant */
 
   /* Secondary */
   --secondary: oklch(0.2 0.06 220);
@@ -255,9 +255,7 @@
   }
 }
 
-.tap-animate {
-  animation: tapRipple 0.4s ease;
-}
+
 
 @keyframes tapRipple {
   0% {
@@ -292,10 +290,10 @@
 @keyframes successGlow {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+    box-shadow: 0 0 0 0 oklch(0.93 0.07 100 / 0);
   }
   50% {
-    box-shadow: 0 0 20px 5px rgba(74, 222, 128, 0.4);
+    box-shadow: 0 0 20px 6px oklch(0.93 0.07 100 / 0.45);
   }
 }
 

@@ -14,7 +14,10 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-foreground border-t border-border">
+    <footer className="bg-foreground border-t border-border relative">
+      {/* TRAIT HORIZONTAL SUPÉRIEUR */}
+      <div className="absolute top-0 left-0 w-full border-t border-gray-300"></div>
+
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
@@ -87,9 +90,23 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-border text-center text-sm text-black">
-          © {new Date().getFullYear()} Les Jardins Yasmina. {t("footer.rights")}
-          .
+        <div className="mt-8 pt-8 border-t border-border text-center text-sm text-black space-y-2">
+          <div>
+            © {new Date().getFullYear()} Les Jardins Yasmina.{" "}
+            {t("footer.rights")}.
+          </div>
+
+          <div className="text-l">
+            Développé par{" "}
+            <a
+              href="https://hospitalitywebservices.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-400! hover:text-orange-500 font-semibold transition-colors"
+            >
+              HWS
+            </a>
+          </div>
         </div>
       </div>
     </footer>

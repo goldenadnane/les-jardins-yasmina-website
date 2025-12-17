@@ -67,7 +67,7 @@ export default function ReservationPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary font-montserrat">
               {t("reservation_page.title")}
             </h1>
-            <p className="text-lg text-black dark:text-black">
+            <p className="text-lg text-white dark:text-white">
               {t("reservation_page.subtitle")}
             </p>
           </div>

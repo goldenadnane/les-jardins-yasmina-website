@@ -1,7 +1,7 @@
 // components/animation/WithAnimation.tsx
-import { ReactNode, useRef, useEffect } from 'react';
+import { ReactNode, useRef, useEffect } from "react";
 
-type AnimationType = 'panda' | 'foundation' | 'windart';
+type AnimationType = "panda" | "foundation" | "windart";
 
 interface WithAnimationProps {
   children: ReactNode;
@@ -9,7 +9,11 @@ interface WithAnimationProps {
   delay?: number;
 }
 
-export function WithAnimation({ children, type = 'panda', delay = 0 }: WithAnimationProps) {
+export function WithAnimation({
+  children,
+  type = "panda",
+  delay = 0,
+}: WithAnimationProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
