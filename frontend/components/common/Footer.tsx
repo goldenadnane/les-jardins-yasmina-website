@@ -21,7 +21,7 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+            <h3 className="text-2xl font-bold bg-linear-to-r bg-[#B8860B] bg-clip-text text-transparent">
               Les Jardins Yasmina
             </h3>
             <p className="text-sm text-black">{t("footer.description")}</p>

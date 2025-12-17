@@ -86,7 +86,7 @@ export function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <Button
               asChild
-              className="bg-[#B8860B] text-black hover:bg-[#D4AF37] transition-colors font-semibold"
+              className="bg-[#B8860B] text-black transition-colors font-semibold"
             >
               <Link to="/reservation">{t("common.book_now")}</Link>
             </Button>
