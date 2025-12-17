@@ -1,6 +1,18 @@
-.encore
+# Node
+node_modules/
+
+# Builds
+.next/
+dist/
+build/
+public/
+
+# Encore
+.encore/
+encore.gen/
 encore.gen.go
 encore.gen.cue
-/.encore
-node_modules
-/encore.gen
+
+# Env & logs
+.env
+*.log
